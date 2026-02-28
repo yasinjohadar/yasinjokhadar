@@ -56,8 +56,12 @@ class VideoController extends Controller
             'views_count' => 'nullable|integer|min:0',
             'description' => 'nullable|string|max:5000',
             'order' => 'nullable|integer|min:0',
-            'is_active' => 'sometimes|boolean',
-            'is_featured' => 'sometimes|boolean',
+            'is_active' => 'nullable|in:0,1',
+            'is_featured' => 'nullable|in:0,1',
+        ], [
+            'title.required' => 'عنوان الفيديو مطلوب.',
+            'video_url.required' => 'رابط يوتيوب مطلوب.',
+            'video_url.url' => 'رابط يوتيوب غير صالح.',
         ]);
 
         $validated['views_count'] = (int) ($validated['views_count'] ?? 0);
@@ -94,10 +98,13 @@ class VideoController extends Controller
             'views_count' => 'nullable|integer|min:0',
             'description' => 'nullable|string|max:5000',
             'order' => 'nullable|integer|min:0',
-            'is_active' => 'sometimes|boolean',
-            'is_featured' => 'sometimes|boolean',
+            'is_active' => 'nullable|in:0,1',
+            'is_featured' => 'nullable|in:0,1',
+        ], [
+            'title.required' => 'عنوان الفيديو مطلوب.',
+            'video_url.required' => 'رابط يوتيوب مطلوب.',
+            'video_url.url' => 'رابط يوتيوب غير صالح.',
         ]);
-
         $validated['views_count'] = (int) ($validated['views_count'] ?? $video->views_count);
         $validated['order'] = (int) ($validated['order'] ?? $video->order);
         $validated['is_active'] = $request->boolean('is_active');

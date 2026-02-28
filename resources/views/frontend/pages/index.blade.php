@@ -145,7 +145,7 @@
             </div>
             <div class="row g-4">
                 @forelse($courses ?? [] as $course)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <a href="{{ route('course.show', $course->slug) }}" class="glass-panel course-card animate-on-scroll animate-delay-{{ $loop->iteration }}"
                         style="text-decoration:none;color:inherit;cursor:pointer;display:block;">
                         <div class="course-img-wrapper">

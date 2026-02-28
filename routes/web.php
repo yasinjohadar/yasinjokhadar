@@ -111,7 +111,7 @@ Route::get('/', function () {
     $courses = Course::with('category')
         ->active()
         ->orderBy('order')
-        ->take(6)
+        ->take(4)
         ->get();
     $testimonials = Testimonial::active()->featured()->orderBy('order')->take(3)->get();
     $videos = Video::active()->featured()->orderBy('order')->take(3)->get();

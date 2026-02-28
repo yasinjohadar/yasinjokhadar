@@ -30,7 +30,13 @@
 
         @if($errors->any())
         <div class="alert alert-danger alert-dismissible fade show">
-            <i class="bi bi-exclamation-triangle me-2"></i>هناك بعض الأخطاء في البيانات المدخلة، يرجى المراجعة.
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            <strong>هناك بعض الأخطاء في البيانات المدخلة، يرجى المراجعة:</strong>
+            <ul class="mb-0 mt-2">
+                @foreach($errors->all() as $message)
+                <li>{{ $message }}</li>
+                @endforeach
+            </ul>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
         @endif

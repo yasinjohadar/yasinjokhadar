@@ -66,14 +66,16 @@
                 </div>
 
                 <div class="form-check form-switch mb-2">
+                    <input type="hidden" name="is_featured" value="0">
                     <input class="form-check-input" type="checkbox" role="switch" id="is_featured"
-                           name="is_featured" {{ old('is_featured', $editing ? $video->is_featured : false) ? 'checked' : '' }}>
+                           name="is_featured" value="1" {{ old('is_featured', $editing ? $video->is_featured : false) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_featured">عرضه في الصفحة الرئيسية (مميز)</label>
                 </div>
 
                 <div class="form-check form-switch mb-2">
+                    <input type="hidden" name="is_active" value="0">
                     <input class="form-check-input" type="checkbox" role="switch" id="is_active"
-                           name="is_active" {{ old('is_active', $editing ? $video->is_active : true) ? 'checked' : '' }}>
+                           name="is_active" value="1" {{ old('is_active', $editing ? $video->is_active : true) ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_active">الفيديو نشط</label>
                 </div>
             </div>
