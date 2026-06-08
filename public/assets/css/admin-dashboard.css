@@ -1,0 +1,428 @@
+/* Admin Dashboard — premium layout with light/dark support */
+
+.dash-pro {
+    --dash-radius: 18px;
+    --dash-radius-sm: 14px;
+    --dash-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    --dash-shadow-hover: 0 18px 42px rgba(15, 23, 42, 0.12);
+    --dash-surface: #ffffff;
+    --dash-surface-soft: #f8fafc;
+    --dash-border: rgba(148, 163, 184, 0.22);
+    --dash-text-muted: #64748b;
+}
+
+[data-theme-mode="dark"] .dash-pro {
+    --dash-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    --dash-shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.42);
+    --dash-surface: rgb(var(--body-bg-rgb));
+    --dash-surface-soft: rgba(255, 255, 255, 0.03);
+    --dash-border: rgba(255, 255, 255, 0.08);
+    --dash-text-muted: #94a3b8;
+}
+
+.dash-pro-welcome {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.dash-pro-welcome h4 {
+    margin: 0 0 6px;
+    font-weight: 800;
+    font-size: 1.35rem;
+}
+
+.dash-pro-welcome p {
+    margin: 0;
+    color: var(--dash-text-muted);
+    font-size: 0.92rem;
+}
+
+.dash-pro-role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: rgb(var(--primary-rgb));
+    font-size: 0.82rem;
+    font-weight: 700;
+    border: 1px solid rgba(var(--primary-rgb), 0.15);
+}
+
+[data-theme-mode="dark"] .dash-pro-role-badge {
+    background: rgba(var(--primary-rgb), 0.16);
+}
+
+.dash-pro-alert {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: var(--dash-radius-sm);
+    border: 1px solid rgba(var(--warning-rgb), 0.28);
+    background: rgba(var(--warning-rgb), 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.dash-pro-hero-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 1.75rem;
+}
+
+.dash-pro-hero-card {
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    border-radius: var(--dash-radius);
+    padding: 22px 20px;
+    color: #fff;
+    min-height: 132px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), box-shadow 0.35s ease;
+    box-shadow: var(--dash-shadow);
+}
+
+.dash-pro-hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--dash-shadow-hover);
+}
+
+.dash-pro-hero-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 55%);
+    pointer-events: none;
+}
+
+.dash-pro-hero-card--purple { background: linear-gradient(135deg, #6d28d9, #8b5cf6); }
+.dash-pro-hero-card--green { background: linear-gradient(135deg, #059669, #34d399); }
+.dash-pro-hero-card--blue { background: linear-gradient(135deg, #0162e8, #38bdf8); }
+.dash-pro-hero-card--orange { background: linear-gradient(135deg, #ea580c, #fb923c); }
+
+.dash-pro-hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.dash-pro-hero-text p {
+    margin: 0 0 6px;
+    font-size: 0.84rem;
+    opacity: 0.92;
+}
+
+.dash-pro-hero-text h3 {
+    margin: 0 0 8px;
+    font-size: 1.85rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.dash-pro-hero-text span {
+    font-size: 0.78rem;
+    opacity: 0.88;
+}
+
+.dash-pro-hero-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    backdrop-filter: blur(4px);
+}
+
+.dash-pro-panel {
+    background: var(--dash-surface);
+    border: 1px solid var(--dash-border);
+    border-radius: var(--dash-radius);
+    box-shadow: var(--dash-shadow);
+    margin-bottom: 1.75rem;
+    overflow: hidden;
+}
+
+.dash-pro-panel-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 22px 0;
+}
+
+.dash-pro-panel-header h5 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dash-pro-panel-header p {
+    margin: 6px 0 0;
+    color: var(--dash-text-muted);
+    font-size: 0.82rem;
+}
+
+.dash-pro-panel-body {
+    padding: 18px 22px 22px;
+}
+
+.dash-pro-shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.dash-pro-shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 14px;
+    border-radius: var(--dash-radius-sm);
+    border: 1px solid var(--dash-border);
+    background: var(--dash-surface-soft);
+    text-decoration: none !important;
+    color: inherit;
+    min-height: 148px;
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.2, 0.64, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.dash-pro-shortcut:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--primary-rgb), 0.25);
+    box-shadow: var(--dash-shadow-hover);
+    color: inherit;
+    background: var(--dash-surface);
+}
+
+.dash-pro-shortcut-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.dash-pro-shortcut:hover .dash-pro-shortcut-icon {
+    transform: scale(1.08);
+}
+
+.dash-pro-shortcut h6 {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.dash-pro-shortcut p {
+    margin: 0;
+    font-size: 0.74rem;
+    color: var(--dash-text-muted);
+    line-height: 1.5;
+}
+
+.dash-pro-shortcut-meta {
+    margin-top: auto;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgb(var(--primary-rgb));
+}
+
+.dash-pro-shortcut-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgb(var(--warning-rgb));
+}
+
+.dash-pro-shortcut--primary .dash-pro-shortcut-icon { background: linear-gradient(135deg, #0162e8, #3d8bfd); }
+.dash-pro-shortcut--success .dash-pro-shortcut-icon { background: linear-gradient(135deg, #22c03c, #5dd879); }
+.dash-pro-shortcut--info .dash-pro-shortcut-icon { background: linear-gradient(135deg, #00b9ff, #5ed4ff); }
+.dash-pro-shortcut--warning .dash-pro-shortcut-icon { background: linear-gradient(135deg, #fbbc0b, #ffd24d); }
+.dash-pro-shortcut--danger .dash-pro-shortcut-icon { background: linear-gradient(135deg, #ee335e, #ff6b8a); }
+.dash-pro-shortcut--purple .dash-pro-shortcut-icon { background: linear-gradient(135deg, #7200c9, #a855f7); }
+.dash-pro-shortcut--teal .dash-pro-shortcut-icon { background: linear-gradient(135deg, #00cccc, #3de8e8); }
+.dash-pro-shortcut--orange .dash-pro-shortcut-icon { background: linear-gradient(135deg, #fd7e14, #ffa94d); }
+.dash-pro-shortcut--dark .dash-pro-shortcut-icon { background: linear-gradient(135deg, #3b4863, #5c6b8a); }
+
+.dash-pro-bottom-grid {
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    gap: 18px;
+}
+
+.dash-pro-card {
+    background: var(--dash-surface);
+    border: 1px solid var(--dash-border);
+    border-radius: var(--dash-radius);
+    box-shadow: var(--dash-shadow);
+    height: 100%;
+}
+
+.dash-pro-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--dash-border);
+}
+
+.dash-pro-card-header h6 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dash-pro-card-body {
+    padding: 16px 20px 20px;
+}
+
+.dash-pro-today-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--dash-border);
+}
+
+.dash-pro-today-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dash-pro-today-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.86rem;
+    color: var(--dash-text-muted);
+}
+
+.dash-pro-today-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.dash-pro-today-icon--primary { background: rgba(var(--primary-rgb), 0.12); color: rgb(var(--primary-rgb)); }
+.dash-pro-today-icon--success { background: rgba(var(--success-rgb), 0.12); color: rgb(var(--success-rgb)); }
+.dash-pro-today-icon--warning { background: rgba(var(--warning-rgb), 0.12); color: rgb(var(--warning-rgb)); }
+.dash-pro-today-icon--info { background: rgba(var(--info-rgb), 0.12); color: rgb(var(--info-rgb)); }
+
+.dash-pro-today-value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.dash-pro-activity-item {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--dash-border);
+}
+
+.dash-pro-activity-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dash-pro-activity-link {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgb(var(--primary-rgb));
+    text-decoration: none;
+}
+
+.dash-pro-activity-link:hover {
+    text-decoration: underline;
+}
+
+#dashActivityChart {
+    min-height: 320px;
+}
+
+@media (max-width: 1399.98px) {
+    .dash-pro-shortcuts-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .dash-pro-hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dash-pro-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-pro-shortcuts-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .dash-pro-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-pro-shortcuts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dash-pro-hero-text h3 {
+        font-size: 1.55rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash-pro-shortcuts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dash-pro-hero-card,
+    .dash-pro-shortcut,
+    .dash-pro-shortcut-icon {
+        transition: none;
+    }
+
+    .dash-pro-hero-card:hover,
+    .dash-pro-shortcut:hover {
+        transform: none;
+    }
+}

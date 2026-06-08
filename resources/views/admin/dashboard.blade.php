@@ -5,177 +5,26 @@
 @stop
 
 @section('styles')
-<style>
-    .dash-summary-card {
-        border: 0;
-        border-radius: 16px;
-        overflow: hidden;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .dash-summary-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-    }
-    [data-theme-mode="dark"] .dash-summary-card:hover {
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-    }
-    .dash-summary-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-    }
-    .dash-widget {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 18px;
-        border-radius: 16px;
-        text-decoration: none !important;
-        color: inherit;
-        border: 1px solid var(--default-border);
-        background: var(--custom-white);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        height: 100%;
-    }
-    .dash-widget:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-        border-color: transparent;
-        color: inherit;
-    }
-    [data-theme-mode="dark"] .dash-widget {
-        background: rgb(var(--body-bg-rgb));
-    }
-    [data-theme-mode="dark"] .dash-widget:hover {
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-    }
-    .dash-widget-icon {
-        width: 54px;
-        height: 54px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.45rem;
-        flex-shrink: 0;
-        color: #fff;
-    }
-    .dash-widget-body h6 {
-        margin: 0 0 4px;
-        font-weight: 700;
-        font-size: 0.95rem;
-    }
-    .dash-widget-body .dash-widget-count {
-        font-size: 1.35rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin: 0;
-    }
-    .dash-widget-body .dash-widget-meta {
-        font-size: 0.78rem;
-        margin-top: 4px;
-        opacity: 0.85;
-    }
-    .dash-widget-arrow {
-        margin-inline-start: auto;
-        opacity: 0.35;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .dash-widget:hover .dash-widget-arrow {
-        opacity: 1;
-        transform: translateX(-4px);
-    }
-    .dash-widget--primary .dash-widget-icon { background: linear-gradient(135deg, #0162e8, #3d8bfd); }
-    .dash-widget--success .dash-widget-icon { background: linear-gradient(135deg, #22c03c, #5dd879); }
-    .dash-widget--info .dash-widget-icon { background: linear-gradient(135deg, #00b9ff, #5ed4ff); }
-    .dash-widget--warning .dash-widget-icon { background: linear-gradient(135deg, #fbbc0b, #ffd24d); }
-    .dash-widget--danger .dash-widget-icon { background: linear-gradient(135deg, #ee335e, #ff6b8a); }
-    .dash-widget--purple .dash-widget-icon { background: linear-gradient(135deg, #7200c9, #a855f7); }
-    .dash-widget--teal .dash-widget-icon { background: linear-gradient(135deg, #00cccc, #3de8e8); }
-    .dash-widget--orange .dash-widget-icon { background: linear-gradient(135deg, #fd7e14, #ffa94d); }
-    .dash-widget--dark .dash-widget-icon { background: linear-gradient(135deg, #3b4863, #5c6b8a); }
-    .dash-section-title {
-        font-weight: 800;
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .dash-section-title::before {
-        content: '';
-        width: 4px;
-        height: 18px;
-        border-radius: 4px;
-        background: rgb(var(--primary-rgb));
-    }
-    .dash-alert-strip {
-        border-radius: 14px;
-        border: 1px solid rgba(var(--warning-rgb), 0.25);
-        background: rgba(var(--warning-rgb), 0.08);
-    }
-    .dash-activity-item {
-        padding: 12px 0;
-        border-bottom: 1px dashed var(--default-border);
-    }
-    .dash-activity-item:last-child {
-        border-bottom: 0;
-        padding-bottom: 0;
-    }
-    .dash-welcome-card {
-        border: 0;
-        border-radius: 18px;
-        background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.92) 0%, rgba(var(--primary-rgb), 0.75) 55%, rgba(114, 0, 201, 0.85) 100%);
-        color: #fff;
-    }
-    .dash-welcome-card .text-muted {
-        color: rgba(255, 255, 255, 0.82) !important;
-    }
-    @media (max-width: 575.98px) {
-        .dash-widget {
-            padding: 14px;
-        }
-        .dash-widget-icon {
-            width: 46px;
-            height: 46px;
-            font-size: 1.2rem;
-        }
-        .dash-widget-body .dash-widget-count {
-            font-size: 1.15rem;
-        }
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('assets/css/admin-dashboard.css') }}">
 @stop
 
 @section('content')
 <div class="main-content app-content">
-    <div class="container-fluid">
+    <div class="container-fluid dash-pro">
 
-        <div class="row g-3 mb-4">
-            <div class="col-12">
-                <div class="card dash-welcome-card">
-                    <div class="card-body p-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
-                        <div>
-                            <h4 class="mb-1 text-white">مرحباً بعودتك، {{ auth()->user()->name ?? 'المدير' }}!</h4>
-                            <p class="mb-0 text-muted">لوحة تحكم مركز الإدارة — نظرة سريعة على كل أقسام النظام.</p>
-                        </div>
-                        <div class="text-end">
-                            <span class="badge bg-white text-primary fs-12 px-3 py-2">
-                                <i class="bi bi-calendar3 me-1"></i>
-                                {{ now()->translatedFormat('l، d F Y') }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
+        <div class="dash-pro-welcome">
+            <div>
+                <h4>مرحباً {{ auth()->user()->name ?? 'المدير' }}، أهلاً بعودتك!</h4>
+                <p>لوحة تحكم مركز الإدارة — نظرة شاملة على المحتوى والطلبات والإعدادات.</p>
             </div>
+            <span class="dash-pro-role-badge">
+                <i class="bi bi-shield-check"></i>
+                أنت مسجل الدخول كأدمن
+            </span>
         </div>
 
         @if($summary['unread_total'] > 0 || $pendingTestimonials > 0)
-        <div class="alert dash-alert-strip d-flex flex-wrap align-items-center gap-2 mb-4" role="alert">
+        <div class="dash-pro-alert" role="alert">
             <i class="bi bi-bell-fill text-warning fs-5"></i>
             <div class="flex-grow-1">
                 <strong>تنبيهات تحتاج انتباهك:</strong>
@@ -187,110 +36,100 @@
         </div>
         @endif
 
-        <div class="row g-3 mb-4">
-            <div class="col-sm-6 col-xl-3">
-                <div class="card custom-card dash-summary-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <span class="dash-summary-icon bg-primary-transparent text-primary">
-                                <i class="bi bi-collection-fill"></i>
-                            </span>
-                            <div class="ms-3">
-                                <p class="mb-0 text-muted fs-12">إجمالي المحتوى</p>
-                                <h3 class="mb-0 fw-bold">{{ number_format($summary['content_items']) }}</h3>
-                            </div>
-                        </div>
+        <div class="dash-pro-hero-grid">
+            @foreach($heroStats as $stat)
+            <article class="dash-pro-hero-card dash-pro-hero-card--{{ $stat['tone'] }}">
+                <div class="dash-pro-hero-content">
+                    <div class="dash-pro-hero-text">
+                        <p>{{ $stat['title'] }}</p>
+                        <h3>{{ number_format($stat['count']) }}</h3>
+                        <span>{{ $stat['meta'] }}</span>
                     </div>
+                    <span class="dash-pro-hero-icon" aria-hidden="true">
+                        <i class="bi {{ $stat['icon'] }}"></i>
+                    </span>
                 </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="card custom-card dash-summary-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <span class="dash-summary-icon bg-warning-transparent text-warning">
-                                <i class="bi bi-envelope-exclamation-fill"></i>
-                            </span>
-                            <div class="ms-3">
-                                <p class="mb-0 text-muted fs-12">طلبات غير مقروءة</p>
-                                <h3 class="mb-0 fw-bold">{{ number_format($summary['unread_total']) }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="card custom-card dash-summary-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <span class="dash-summary-icon bg-danger-transparent text-danger">
-                                <i class="bi bi-chat-square-quote-fill"></i>
-                            </span>
-                            <div class="ms-3">
-                                <p class="mb-0 text-muted fs-12">آراء بانتظار الموافقة</p>
-                                <h3 class="mb-0 fw-bold">{{ number_format($summary['pending_testimonials']) }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="card custom-card dash-summary-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <span class="dash-summary-icon bg-success-transparent text-success">
-                                <i class="bi bi-mailbox2-flag"></i>
-                            </span>
-                            <div class="ms-3">
-                                <p class="mb-0 text-muted fs-12">مشتركو النشرة النشطون</p>
-                                <h3 class="mb-0 fw-bold">{{ number_format($summary['newsletter_active']) }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </article>
+            @endforeach
         </div>
 
-        @foreach($widgetGroups as $group)
-        <div class="mb-4">
-            <h5 class="dash-section-title">{{ $group['title'] }}</h5>
-            <div class="row g-3">
-                @foreach($group['widgets'] as $widget)
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <a href="{{ $widget['url'] }}" class="dash-widget {{ $widget['color'] }}">
-                        <span class="dash-widget-icon">
-                            <i class="bi {{ $widget['icon'] }}"></i>
+        <section class="dash-pro-panel">
+            <div class="dash-pro-panel-header">
+                <div>
+                    <h5><i class="bi bi-lightning-charge-fill text-warning"></i> اختصارات سريعة</h5>
+                    <p>وصول مباشر لأهم أقسام لوحة التحكم — إدارة المحتوى، التواصل، والإعدادات.</p>
+                </div>
+                <span class="badge bg-primary-transparent text-primary px-3 py-2">
+                    <i class="bi bi-grid-3x3-gap me-1"></i>
+                    {{ count($shortcuts) }} قسم
+                </span>
+            </div>
+            <div class="dash-pro-panel-body">
+                <div class="dash-pro-shortcuts-grid">
+                    @foreach($shortcuts as $shortcut)
+                    @php
+                        $tone = str_replace('dash-widget--', 'dash-pro-shortcut--', $shortcut['color']);
+                    @endphp
+                    <a href="{{ $shortcut['url'] }}" class="dash-pro-shortcut {{ $tone }}">
+                        <span class="dash-pro-shortcut-icon">
+                            <i class="bi {{ $shortcut['icon'] }}"></i>
                         </span>
-                        <span class="dash-widget-body">
-                            <h6>{{ $widget['title'] }}</h6>
-                            @if(!is_null($widget['count']))
-                                <p class="dash-widget-count">{{ number_format($widget['count']) }}</p>
-                            @endif
-                            @if($widget['badge'])
-                                <span class="dash-widget-meta text-warning">{{ $widget['badge'] }}</span>
-                            @elseif(is_null($widget['count']))
-                                <span class="dash-widget-meta text-muted">{{ $widget['badge'] ?? 'فتح القسم' }}</span>
-                            @else
-                                <span class="dash-widget-meta text-muted">إدارة القسم</span>
-                            @endif
-                        </span>
-                        <i class="bi bi-chevron-left dash-widget-arrow"></i>
+                        <h6>{{ $shortcut['title'] }}</h6>
+                        <p>
+                            {{ $shortcut['description'] ?? 'فتح القسم وإدارته' }}
+                        </p>
+                        @if($shortcut['badge'])
+                            <span class="dash-pro-shortcut-badge">{{ $shortcut['badge'] }}</span>
+                        @elseif(!is_null($shortcut['count']))
+                            <span class="dash-pro-shortcut-meta">{{ number_format($shortcut['count']) }} عنصر</span>
+                        @endif
                     </a>
+                    @endforeach
                 </div>
-                @endforeach
+            </div>
+        </section>
+
+        <div class="dash-pro-bottom-grid">
+            <div class="dash-pro-card">
+                <div class="dash-pro-card-header">
+                    <h6><i class="bi bi-sunrise-fill text-warning"></i> ملخص اليوم</h6>
+                    <small class="text-muted">{{ now()->translatedFormat('d F Y') }}</small>
+                </div>
+                <div class="dash-pro-card-body">
+                    @foreach($todaySummary as $item)
+                    <div class="dash-pro-today-item">
+                        <span class="dash-pro-today-label">
+                            <span class="dash-pro-today-icon dash-pro-today-icon--{{ $item['tone'] }}">
+                                <i class="bi {{ $item['icon'] }}"></i>
+                            </span>
+                            {{ $item['label'] }}
+                        </span>
+                        <span class="dash-pro-today-value">{{ number_format($item['value']) }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="dash-pro-card">
+                <div class="dash-pro-card-header">
+                    <h6><i class="bi bi-graph-up-arrow text-primary"></i> تطور التواصل خلال آخر 6 أشهر</h6>
+                </div>
+                <div class="dash-pro-card-body">
+                    <div id="dashActivityChart"></div>
+                </div>
             </div>
         </div>
-        @endforeach
 
-        <div class="row g-3">
+        <div class="row g-3 mt-1">
             <div class="col-lg-6">
-                <div class="card custom-card h-100">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="card-title mb-0"><i class="bi bi-envelope-open me-2 text-primary"></i>آخر رسائل التواصل</div>
-                        <a href="{{ route('admin.contact-messages.index') }}" class="fs-12 text-primary">عرض الكل</a>
+                <div class="dash-pro-card">
+                    <div class="dash-pro-card-header">
+                        <h6><i class="bi bi-envelope-open text-primary"></i> آخر رسائل التواصل</h6>
+                        <a href="{{ route('admin.contact-messages.index') }}" class="dash-pro-activity-link">عرض الكل</a>
                     </div>
-                    <div class="card-body">
+                    <div class="dash-pro-card-body">
                         @forelse($recentMessages as $message)
-                        <div class="dash-activity-item">
+                        <div class="dash-pro-activity-item">
                             <div class="d-flex justify-content-between align-items-start gap-2">
                                 <div>
                                     <strong>{{ $message->name }}</strong>
@@ -310,14 +149,14 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card custom-card h-100">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="card-title mb-0"><i class="bi bi-calendar-event me-2 text-success"></i>آخر طلبات الاستشارة</div>
-                        <a href="{{ route('admin.consultation-requests.index') }}" class="fs-12 text-primary">عرض الكل</a>
+                <div class="dash-pro-card">
+                    <div class="dash-pro-card-header">
+                        <h6><i class="bi bi-calendar-event text-success"></i> آخر طلبات الاستشارة</h6>
+                        <a href="{{ route('admin.consultation-requests.index') }}" class="dash-pro-activity-link">عرض الكل</a>
                     </div>
-                    <div class="card-body">
+                    <div class="dash-pro-card-body">
                         @forelse($recentConsultations as $request)
-                        <div class="dash-activity-item">
+                        <div class="dash-pro-activity-item">
                             <div class="d-flex justify-content-between align-items-start gap-2">
                                 <div>
                                     <strong>{{ $request->name }}</strong>
@@ -340,4 +179,107 @@
 
     </div>
 </div>
+@stop
+
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.49.1/dist/apexcharts.min.js"></script>
+<script>
+(function () {
+    const chartEl = document.querySelector('#dashActivityChart');
+    if (!chartEl || typeof ApexCharts === 'undefined') {
+        return;
+    }
+
+    const isDark = document.documentElement.getAttribute('data-theme-mode') === 'dark';
+    const textColor = isDark ? '#94a3b8' : '#64748b';
+    const gridColor = isDark ? 'rgba(255,255,255,0.06)' : '#eef2f7';
+    const chartData = @json($activityChart);
+
+    const chart = new ApexCharts(chartEl, {
+        series: chartData.series,
+        chart: {
+            type: 'area',
+            height: 320,
+            fontFamily: 'inherit',
+            toolbar: { show: false },
+            zoom: { enabled: false },
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 700
+            }
+        },
+        colors: ['#0162e8', '#22c03c'],
+        dataLabels: { enabled: false },
+        stroke: {
+            curve: 'smooth',
+            width: 3
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.35,
+                opacityTo: 0.05,
+                stops: [0, 90, 100]
+            }
+        },
+        grid: {
+            borderColor: gridColor,
+            strokeDashArray: 4
+        },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left',
+            labels: { colors: textColor }
+        },
+        xaxis: {
+            categories: chartData.labels,
+            labels: {
+                style: {
+                    colors: textColor,
+                    fontSize: '11px',
+                    fontWeight: 600
+                }
+            },
+            axisBorder: { show: false },
+            axisTicks: { show: false }
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: textColor,
+                    fontSize: '11px',
+                    fontWeight: 600
+                }
+            }
+        },
+        tooltip: {
+            theme: isDark ? 'dark' : 'light'
+        }
+    });
+
+    chart.render();
+
+    function refreshChartTheme() {
+        const dark = document.documentElement.getAttribute('data-theme-mode') === 'dark';
+        const labelColor = dark ? '#94a3b8' : '#64748b';
+        const borderColor = dark ? 'rgba(255,255,255,0.06)' : '#eef2f7';
+
+        chart.updateOptions({
+            grid: { borderColor },
+            legend: { labels: { colors: labelColor } },
+            xaxis: { labels: { style: { colors: labelColor } } },
+            yaxis: { labels: { style: { colors: labelColor } } },
+            tooltip: { theme: dark ? 'dark' : 'light' }
+        }, false, false);
+    }
+
+    const themeObserver = new MutationObserver(refreshChartTheme);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme-mode']
+    });
+})();
+</script>
 @stop
