@@ -26,52 +26,55 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===========================
   // 1. Theme Toggle (Dark/Light)
   // ===========================
-  const themeToggle = document.getElementById('themeToggle');
+  const themeToggles = document.querySelectorAll('#themeToggle, #themeToggleMobile');
   const htmlEl = document.documentElement;
 
-  // Load saved theme
   const savedTheme = localStorage.getItem('yj-theme') || 'light';
   htmlEl.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
+  themeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
       const current = htmlEl.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
       htmlEl.setAttribute('data-theme', next);
       localStorage.setItem('yj-theme', next);
-      updateThemeIcon(next);
     });
-  }
-
-  function updateThemeIcon(theme) {
-    if (!themeToggle) return;
-    const icon = themeToggle.querySelector('i');
-    if (icon) {
-      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-  }
-
-  // ===========================
-  // 2. Navbar scroll effect
-  // ===========================
-  const navbar = document.querySelector('.main-navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
-    }
   });
+
+  // ===========================
+  // 2. Header scroll effect
+  // ===========================
+  const siteHeader = document.getElementById('siteHeader');
+  const handleHeaderScroll = () => {
+    if (window.scrollY > 24) {
+      siteHeader?.classList.add('is-scrolled');
+    } else {
+      siteHeader?.classList.remove('is-scrolled');
+    }
+  };
+  handleHeaderScroll();
+  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+
+  const navCollapse = document.getElementById('navbarNav');
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  navCollapse?.addEventListener('show.bs.collapse', () => navbarToggler?.classList.add('is-open'));
+  navCollapse?.addEventListener('hide.bs.collapse', () => navbarToggler?.classList.remove('is-open'));
 
   // ===========================
   // 3. Active nav link highlight
   // ===========================
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.main-navbar .nav-link').forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
+    if (!href || href.startsWith('#')) return;
+
+    try {
+      const linkPath = new URL(href, window.location.origin).pathname.replace(/\/$/, '') || '/';
+      if (linkPath === currentPath) {
+        link.classList.add('active');
+      }
+    } catch (e) {
+      // ignore invalid URLs
     }
   });
 
