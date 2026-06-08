@@ -16,9 +16,6 @@
                 onerror="this.onerror=null;this.src='{{ $fallbackThumb }}';this.closest('.video-wrapper').classList.add('is-fallback');"
             >
             <div class="video-overlay">
-                <div class="video-play-ring" aria-hidden="true">
-                    <i class="far fa-circle-play video-play-icon"></i>
-                </div>
                 <span class="video-watch-label"><i class="fas fa-play-circle"></i> شاهد الآن</span>
             </div>
             <span class="video-platform-badge" aria-hidden="true">

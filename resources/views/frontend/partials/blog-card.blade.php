@@ -19,9 +19,6 @@
                 loading="lazy"
                 onerror="this.onerror=null;this.src='{{ $fallbackImage }}';this.closest('.blog-img-wrapper').classList.add('is-fallback');"
             >
-            <div class="blog-img-overlay" aria-hidden="true">
-                <i class="far fa-book-open blog-read-icon"></i>
-            </div>
             @if($post->category)
             <span class="blog-category-badge">{{ $post->category->name }}</span>
             @endif
