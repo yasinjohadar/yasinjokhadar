@@ -4,6 +4,20 @@
 @section('description', 'إدارة السيرفرات — إعداد وإدارة الخوادم، الاستضافة، النشر على Linux والخدمات السحابية مع ياسين جوخدار.')
 
 @section('content')
+    @php
+        $serverTechnologies = [
+            ['name' => 'Linux', 'icon' => 'fab fa-linux', 'color' => '#FCC624'],
+            ['name' => 'Ubuntu', 'icon' => 'fab fa-ubuntu', 'color' => '#E95420'],
+            ['name' => 'Nginx', 'icon' => 'fas fa-server', 'color' => '#009639'],
+            ['name' => 'Apache', 'icon' => 'fas fa-feather-alt', 'color' => '#D22128'],
+            ['name' => 'MySQL', 'icon' => 'fas fa-database', 'color' => '#4479A1'],
+            ['name' => 'PostgreSQL', 'icon' => 'fas fa-database', 'color' => '#336791'],
+            ['name' => 'Docker', 'icon' => 'fab fa-docker', 'color' => '#2496ED'],
+            ['name' => 'SSL / Let\'s Encrypt', 'icon' => 'fas fa-lock', 'color' => '#2E7D32'],
+            ['name' => 'Git', 'icon' => 'fab fa-git-alt', 'color' => '#F05032'],
+        ];
+    @endphp
+
     <!-- ============ SERVICE BANNER ============ -->
     <section class="page-banner page-banner-service">
         <div class="page-banner-overlay"></div>
@@ -112,44 +126,11 @@
         </div>
     </section>
 
-    <!-- ============ TECHNOLOGIES ============ -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-badge">التقنيات</span>
-                <h2>تقنيات نعتمد عليها</h2>
-                <p>أدوات وأنظمة تشغيل لإدارة الخوادم</p>
-            </div>
-            <div class="glass-panel service-tech-wrap animate-on-scroll">
-                <div class="row g-3">
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Linux</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Ubuntu</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Nginx</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Apache</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">MySQL / PostgreSQL</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Docker</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">SSL / Let's Encrypt</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Git</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.partials.service-tech-section', [
+        'title' => 'تقنيات نعتمد عليها',
+        'subtitle' => 'أدوات وأنظمة تشغيل لإدارة الخوادم',
+        'technologies' => $serverTechnologies,
+    ])
 
     <!-- ============ RELATED SERVICES ============ -->
     <section class="section-padding" style="background: var(--clr-bg-secondary);">

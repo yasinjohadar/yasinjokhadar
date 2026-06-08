@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\View;
 use App\Events\WhatsAppMessageReceived;
 use App\Listeners\AutoReplyWhatsAppListener;
+use App\Models\Course;
 use App\Services\SiteSettingsService;
 
 class AppServiceProvider extends ServiceProvider
@@ -43,6 +44,12 @@ class AppServiceProvider extends ServiceProvider
 
         // إعدادات الموقع (تواصل وسوشيال) متاحة لجميع الـ views
         View::share('siteSettings', app(SiteSettingsService::class)->getSettings());
+
+        try {
+            View::share('footerCourses', Course::active()->orderBy('order')->take(4)->get());
+        } catch (\Throwable) {
+            View::share('footerCourses', collect());
+        }
 
         // تسجيل PermissionServiceProvider
         $this->app->register(PermissionServiceProvider::class);

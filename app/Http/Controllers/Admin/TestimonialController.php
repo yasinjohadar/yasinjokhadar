@@ -24,12 +24,24 @@ class TestimonialController extends Controller
             });
         }
 
+        if (request()->filled('approval')) {
+            $query->where('status', request('approval'));
+        }
+
         if (request()->filled('status')) {
             $status = request('status');
             if ($status === 'active') {
                 $query->where('is_active', true);
             } elseif ($status === 'inactive') {
                 $query->where('is_active', false);
+            }
+        }
+
+        if (request()->filled('source')) {
+            if (request('source') === 'public') {
+                $query->where('is_public_submission', true);
+            } elseif (request('source') === 'admin') {
+                $query->where('is_public_submission', false);
             }
         }
 
@@ -76,6 +88,8 @@ class TestimonialController extends Controller
         $validated['order'] = $validated['order'] ?? 0;
         $validated['is_featured'] = $request->has('is_featured') ? 1 : 0;
         $validated['is_active'] = $request->has('is_active') ? 1 : 0;
+        $validated['status'] = Testimonial::STATUS_APPROVED;
+        $validated['is_public_submission'] = false;
 
         if ($request->hasFile('avatar')) {
             $validated['avatar'] = $request->file('avatar')->store('testimonials', 'public');
@@ -151,5 +165,26 @@ class TestimonialController extends Controller
 
         return redirect()->route('admin.testimonials.index')
             ->with('success', 'تم حذف رأي الطالب بنجاح.');
+    }
+
+    public function approve(Testimonial $testimonial)
+    {
+        $testimonial->update([
+            'status' => Testimonial::STATUS_APPROVED,
+            'is_active' => true,
+        ]);
+
+        return redirect()->back()->with('success', 'تم قبول الرأي ونشره بنجاح.');
+    }
+
+    public function reject(Testimonial $testimonial)
+    {
+        $testimonial->update([
+            'status' => Testimonial::STATUS_REJECTED,
+            'is_active' => false,
+            'is_featured' => false,
+        ]);
+
+        return redirect()->back()->with('success', 'تم رفض الرأي.');
     }
 }

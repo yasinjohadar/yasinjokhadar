@@ -44,32 +44,41 @@
                     @endphp
                     <div class="col-lg-4 col-md-6 project-filter-item" data-category="{{ $slug }}">
                         <article class="glass-panel project-card animate-on-scroll">
-                            <div class="project-card-thumb">
-                                @if($project->image)
-                                    <div class="project-card-thumb-inner">
-                                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+                            <a href="{{ route('projects.show', $project->slug) }}" class="project-card-thumb-link">
+                                <div class="project-card-thumb">
+                                    @if($project->image)
+                                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="project-card-img" width="1920" height="1080" loading="lazy">
+                                    @else
+                                        <div class="project-card-thumb-placeholder">
+                                            <i class="{{ $icon }}"></i>
+                                        </div>
+                                    @endif
+                                    <div class="project-card-thumb-overlay">
+                                        <span class="project-card-view-hint"><i class="fas fa-eye"></i> عرض التفاصيل</span>
                                     </div>
-                                @else
-                                    <div class="project-card-thumb-inner"><i class="{{ $icon }}"></i></div>
-                                @endif
-                                <span class="project-card-badge">{{ $badge }}</span>
-                            </div>
+                                    <span class="project-card-badge">{{ $badge }}</span>
+                                </div>
+                            </a>
                             <div class="project-card-body">
-                                <h3 class="project-card-title">{{ $project->title }}</h3>
+                                <h3 class="project-card-title">
+                                    <a href="{{ route('projects.show', $project->slug) }}">{{ $project->title }}</a>
+                                </h3>
                                 <p class="project-card-desc">{{ $project->short_description ?? Str::limit(strip_tags($project->description), 120) }}</p>
+                                @if(count($project->tags_array))
                                 <div class="project-card-tags">
                                     @foreach($project->tags_array as $tag)
                                         <span>{{ $tag }}</span>
                                     @endforeach
                                 </div>
+                                @endif
                             </div>
                             <div class="project-card-actions">
                                 <a href="{{ route('projects.show', $project->slug) }}" class="btn-project btn-project-primary">
-                                    <i class="fas fa-external-link-alt"></i> عرض المشروع
+                                    <i class="fas fa-folder-open"></i> عرض المشروع
                                 </a>
                                 @if($project->demo_url)
                                     <a href="{{ $project->demo_url }}" target="_blank" rel="noopener noreferrer" class="btn-project btn-project-outline">
-                                        <i class="fas fa-play"></i> معاينة حية
+                                        <i class="fas fa-globe"></i> فتح الموقع
                                     </a>
                                 @endif
                                 @if($project->code_url)

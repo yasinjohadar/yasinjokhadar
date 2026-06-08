@@ -46,7 +46,16 @@
                             <label class="form-label">بحث</label>
                             <input type="text" name="search" class="form-control" placeholder="ابحث باسم الطالب أو الكورس..." value="{{ request('search') }}">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <label class="form-label">الموافقة</label>
+                            <select name="approval" class="form-select">
+                                <option value="">الكل</option>
+                                <option value="pending" {{ request('approval') === 'pending' ? 'selected' : '' }}>بانتظار المراجعة</option>
+                                <option value="approved" {{ request('approval') === 'approved' ? 'selected' : '' }}>مقبول</option>
+                                <option value="rejected" {{ request('approval') === 'rejected' ? 'selected' : '' }}>مرفوض</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
                             <label class="form-label">الحالة</label>
                             <select name="status" class="form-select">
                                 <option value="">الكل</option>
@@ -54,7 +63,15 @@
                                 <option value="inactive" {{ request('status') === 'inactive' ? 'selected' : '' }}>غير نشط</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <label class="form-label">المصدر</label>
+                            <select name="source" class="form-select">
+                                <option value="">الكل</option>
+                                <option value="public" {{ request('source') === 'public' ? 'selected' : '' }}>من الموقع</option>
+                                <option value="admin" {{ request('source') === 'admin' ? 'selected' : '' }}>من لوحة التحكم</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
                             <label class="form-label">مميز في الصفحة الرئيسية</label>
                             <select name="featured" class="form-select">
                                 <option value="">الكل</option>
@@ -90,10 +107,11 @@
                                 <th>الطالب</th>
                                 <th>الكورس</th>
                                 <th>التقييم</th>
+                                <th>الموافقة</th>
                                 <th>مميز</th>
                                 <th>الحالة</th>
                                 <th>الترتيب</th>
-                                <th width="140">الإجراءات</th>
+                                <th width="200">الإجراءات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,6 +132,9 @@
                                             @if($testimonial->student_title)
                                                 <div class="text-muted small">{{ $testimonial->student_title }}</div>
                                             @endif
+                                            @if($testimonial->is_public_submission)
+                                                <span class="badge bg-warning-transparent text-warning mt-1">من الموقع</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
@@ -126,6 +147,15 @@
                                             <i class="bi bi-star text-muted"></i>
                                         @endif
                                     @endfor
+                                </td>
+                                <td>
+                                    @if($testimonial->status === 'pending')
+                                        <span class="badge bg-warning-transparent text-warning">{{ $testimonial->statusLabel() }}</span>
+                                    @elseif($testimonial->status === 'approved')
+                                        <span class="badge bg-success-transparent text-success">{{ $testimonial->statusLabel() }}</span>
+                                    @else
+                                        <span class="badge bg-danger-transparent text-danger">{{ $testimonial->statusLabel() }}</span>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($testimonial->is_featured)
@@ -143,6 +173,20 @@
                                 </td>
                                 <td>{{ $testimonial->order }}</td>
                                 <td>
+                                    @if($testimonial->status === 'pending')
+                                        <form action="{{ route('admin.testimonials.approve', $testimonial) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-success-light" title="قبول ونشر">
+                                                <i class="bi bi-check-lg"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.testimonials.reject', $testimonial) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-warning-light" title="رفض">
+                                                <i class="bi bi-x-lg"></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                     <a href="{{ route('admin.testimonials.edit', $testimonial) }}" class="btn btn-sm btn-primary-light">
                                         <i class="bi bi-pencil"></i>
                                     </a>
@@ -157,7 +201,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="8" class="text-center py-5">
+                                <td colspan="9" class="text-center py-5">
                                     <i class="bi bi-chat-square-quote display-4 text-muted"></i>
                                     <p class="text-muted mt-3">لا توجد آراء طلاب حالياً</p>
                                     <a href="{{ route('admin.testimonials.create') }}" class="btn btn-primary">

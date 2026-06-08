@@ -20,7 +20,7 @@
             class="newsletter-input @error('newsletter_email') is-invalid @enderror"
             aria-label="البريد الإلكتروني">
         <button type="submit" class="newsletter-btn">
-            <i class="fas fa-paper-plane"></i> {{ ($variant ?? '') === 'home' ? 'اشترك الآن' : 'اشتراك' }}
+            <i class="fas fa-paper-plane"></i> {{ in_array($variant ?? '', ['home', 'footer-strip'], true) ? 'اشترك الآن' : 'اشتراك' }}
         </button>
     </div>
 </form>

@@ -33,16 +33,7 @@
             <div class="row g-4">
                 @forelse($videos as $video)
                 <div class="col-lg-4 col-md-6">
-                    <div class="glass-panel video-card animate-on-scroll animate-delay-{{ ($loop->iteration - 1) % 3 + 1 }}">
-                        <a href="{{ $video->video_url }}" target="_blank" rel="noopener noreferrer" class="video-wrapper d-block text-decoration-none">
-                            <img src="{{ $video->thumbnail_url ?: $fa . '/images/course-webdev.svg' }}" alt="{{ $video->title }}" width="400" height="200" loading="lazy">
-                            <div class="play-btn"><i class="fas fa-play-circle"></i></div>
-                        </a>
-                        <div class="video-body">
-                            <h6>{{ $video->title }}</h6>
-                            <span><i class="fas fa-eye"></i> {{ number_format($video->views_count) }} مشاهدة</span>
-                        </div>
-                    </div>
+                    @include('frontend.partials.video-card', ['video' => $video])
                 </div>
                 @empty
                 <div class="col-12 text-center py-5">

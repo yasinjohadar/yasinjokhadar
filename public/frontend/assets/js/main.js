@@ -173,9 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ===========================
-  // 8. Course Filter
+  // 8. Course / Projects Filter
   // ===========================
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.courses-filter .filter-btn, .projects-filter .filter-btn');
   const courseCards = document.querySelectorAll('.course-filter-item');
 
   filterBtns.forEach(btn => {
@@ -195,6 +195,118 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // ===========================
+  // 8b. Blog Filter + Search
+  // ===========================
+  const blogFilterBar = document.querySelector('.blog-filter-bar');
+  if (blogFilterBar) {
+    const blogPills = blogFilterBar.querySelectorAll('.blog-filter-pill');
+    const blogSearch = document.getElementById('blogSearch');
+    const blogSearchClear = document.getElementById('blogSearchClear');
+    const blogFilterStatus = document.getElementById('blogFilterStatus');
+    const blogFilterEmpty = document.getElementById('blogFilterEmpty');
+    const blogFilterReset = document.getElementById('blogFilterReset');
+    const blogPostsGrid = document.getElementById('blogPostsGrid');
+    const blogFeatured = document.getElementById('blogFeatured');
+    const blogItems = document.querySelectorAll('.blog-filter-item');
+    const categoriesWrap = blogFilterBar.querySelector('.blog-filter-categories-wrap');
+    const categoriesEl = document.getElementById('blogFilterCategories');
+    let activeCategory = 'all';
+
+    const updateScrollFade = () => {
+      if (!categoriesWrap || !categoriesEl) return;
+      const scrollable = categoriesEl.scrollWidth > categoriesEl.clientWidth + 4;
+      categoriesWrap.classList.toggle('is-scrollable', scrollable);
+    };
+
+    const normalize = (value) => (value || '').toString().toLowerCase().trim();
+
+    const matchesItem = (item, category, query) => {
+      const itemCategory = item.getAttribute('data-category') || 'all';
+      const itemSearch = normalize(item.getAttribute('data-search'));
+      const categoryMatch = category === 'all' || itemCategory === category;
+      const searchMatch = !query || itemSearch.includes(query);
+      return categoryMatch && searchMatch;
+    };
+
+    const applyBlogFilter = () => {
+      const query = normalize(blogSearch?.value);
+      let visibleCount = 0;
+
+      blogItems.forEach(item => {
+        const show = matchesItem(item, activeCategory, query);
+        item.style.display = show ? '' : 'none';
+        item.style.opacity = show ? '1' : '0';
+        if (show) visibleCount++;
+      });
+
+      if (blogFeatured) {
+        const showFeatured = matchesItem(blogFeatured, activeCategory, query);
+        blogFeatured.style.display = showFeatured ? '' : 'none';
+      }
+
+      if (blogSearchClear) {
+        blogSearchClear.hidden = !query;
+      }
+
+      if (blogFilterStatus) {
+        const isFiltered = activeCategory !== 'all' || !!query;
+        blogFilterStatus.classList.toggle('is-active', isFiltered);
+        if (isFiltered) {
+          blogFilterStatus.textContent = visibleCount
+            ? `عرض ${visibleCount} ${visibleCount === 1 ? 'مقال' : 'مقالات'}`
+            : 'لا توجد نتائج مطابقة';
+        } else {
+          blogFilterStatus.textContent = '';
+        }
+      }
+
+      if (blogFilterEmpty && blogPostsGrid) {
+        const showEmpty = visibleCount === 0;
+        blogFilterEmpty.hidden = !showEmpty;
+        blogPostsGrid.style.display = showEmpty ? 'none' : '';
+      }
+    };
+
+    blogPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        blogPills.forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+        activeCategory = pill.getAttribute('data-filter') || 'all';
+        applyBlogFilter();
+      });
+    });
+
+    blogSearch?.addEventListener('input', applyBlogFilter);
+
+    blogSearchClear?.addEventListener('click', () => {
+      if (blogSearch) {
+        blogSearch.value = '';
+        blogSearch.focus();
+      }
+      applyBlogFilter();
+    });
+
+    blogFilterReset?.addEventListener('click', () => {
+      activeCategory = 'all';
+      blogPills.forEach(p => {
+        const isAll = p.getAttribute('data-filter') === 'all';
+        p.classList.toggle('active', isAll);
+        p.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+      if (blogSearch) blogSearch.value = '';
+      applyBlogFilter();
+    });
+
+    updateScrollFade();
+    window.addEventListener('resize', updateScrollFade);
+    applyBlogFilter();
+  }
 
   // ===========================
   // 9. Contact Form (Formspree)

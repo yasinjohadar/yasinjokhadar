@@ -69,66 +69,74 @@
             <div class="row g-4">
                 <!-- Skill 1 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-1" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-1">
                         <div class="skill-icon"><i class="fas fa-globe"></i></div>
                         <h5>تطوير تطبيقات الويب</h5>
                         <p>تصميم وتطوير مواقع وتطبيقات ويب حديثة ومتجاوبة واحترافية</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 2 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'mobile') }}" class="glass-panel skill-card animate-on-scroll animate-delay-2" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'mobile') }}" class="glass-panel skill-card animate-on-scroll animate-delay-2">
                         <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
                         <h5>تطبيقات الجوال</h5>
                         <p>تطوير تطبيقات الهواتف الذكية متعددة المنصات للأندرويد والـ iOS</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 3 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'security') }}" class="glass-panel skill-card animate-on-scroll animate-delay-3" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'security') }}" class="glass-panel skill-card animate-on-scroll animate-delay-3">
                         <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
                         <h5>أمن المعلومات</h5>
                         <p>حماية الأنظمة والبيانات وتقييم الثغرات وتطبيق أفضل الممارسات الأمنية</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 4 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'servers') }}" class="glass-panel skill-card animate-on-scroll animate-delay-4" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'servers') }}" class="glass-panel skill-card animate-on-scroll animate-delay-4">
                         <div class="skill-icon"><i class="fas fa-server"></i></div>
                         <h5>إدارة السيرفرات</h5>
                         <p>إعداد وإدارة الخوادم، الاستضافة، والنشر مع Linux والخدمات السحابية</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 5 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-1" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-1">
                         <div class="skill-icon"><i class="fas fa-database"></i></div>
                         <h5>قواعد البيانات</h5>
                         <p>تصميم وإدارة قواعد البيانات SQL و NoSQL وتحسين الأداء</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 6 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'devops') }}" class="glass-panel skill-card animate-on-scroll animate-delay-2" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'devops') }}" class="glass-panel skill-card animate-on-scroll animate-delay-2">
                         <div class="skill-icon"><i class="fas fa-cloud"></i></div>
                         <h5>DevOps والسحابة</h5>
                         <p>أتمتة النشر، الحاويات، CI/CD والعمل على منصات سحابية</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 7 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-3" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-3">
                         <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
                         <h5>إدارة المشاريع التقنية</h5>
                         <p>تخطيط ومتابعة المشاريع البرمجية وتنسيق الفرق التقنية</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
                 <!-- Skill 8 -->
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-4" style="text-decoration:none;color:inherit;display:block;height:100%;">
+                    <a href="{{ route('service.show', 'web') }}" class="glass-panel skill-card animate-on-scroll animate-delay-4">
                         <div class="skill-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                         <h5>استشارات وتدريب تقني</h5>
                         <p>تقديم الاستشارات التقنية ودورات تدريبية في البرمجة والتكنولوجيا</p>
+                        <span class="skill-card-more"><i class="fas fa-arrow-left"></i> اكتشف المزيد</span>
                     </a>
                 </div>
             </div>
@@ -146,24 +154,7 @@
             <div class="row g-4">
                 @forelse($courses ?? [] as $course)
                 <div class="col-lg-3 col-md-6">
-                    <a href="{{ route('course.show', $course->slug) }}" class="glass-panel course-card animate-on-scroll animate-delay-{{ $loop->iteration }}"
-                        style="text-decoration:none;color:inherit;cursor:pointer;display:block;">
-                        <div class="course-img-wrapper">
-                            <img src="{{ $course->image ? route('course.image', ['filename' => basename($course->image)]) : $fa . '/images/course-webdev.svg' }}" alt="{{ $course->title }}" width="400" height="200" loading="lazy">
-                            @if($course->badge)
-                            <span class="course-badge">{{ $course->badge }}</span>
-                            @endif
-                        </div>
-                        <div class="course-body">
-                            <h5>{{ $course->title }}</h5>
-                            <p>{{ $course->short_description ?? Str::limit($course->description ?? '', 100) }}</p>
-                        </div>
-                        <div class="course-footer">
-                            <span><i class="fas fa-users"></i> {{ number_format($course->students_count) }} طالب</span>
-                            <span><i class="fas fa-clock"></i> {{ $course->duration_hours ? $course->duration_hours . ' ساعة' : '-' }}</span>
-                            <span class="price">${{ number_format($course->price, 2) }}</span>
-                        </div>
-                    </a>
+                    @include('frontend.partials.course-card', ['course' => $course])
                 </div>
                 @empty
                 <div class="col-12 text-center py-5">
@@ -194,35 +185,7 @@
                 <div class="row g-4">
                     @foreach($testimonials as $testimonial)
                         <div class="col-lg-4 col-md-6">
-                            <div class="glass-panel testimonial-card animate-on-scroll animate-delay-{{ $loop->iteration }}">
-                                <div class="stars">
-                                    @for($i = 1; $i <= 5; $i++)
-                                        @if($i <= $testimonial->rating)
-                                            <i class="fas fa-star"></i>
-                                        @else
-                                            <i class="far fa-star"></i>
-                                        @endif
-                                    @endfor
-                                </div>
-                                <p class="quote-text">"{{ $testimonial->quote }}"</p>
-                                <div class="student-info">
-                                    <div class="d-flex align-items-center">
-                                        @if($testimonial->avatar)
-                                            <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->student_name }}" class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover">
-                                        @else
-                                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2" style="width:40px;height:40px;">
-                                                <span class="fw-bold">{{ mb_substr($testimonial->student_name, 0, 1) }}</span>
-                                            </div>
-                                        @endif
-                                        <div>
-                                            <div class="student-name">{{ $testimonial->student_name }}</div>
-                                            @if($testimonial->student_title)
-                                                <div class="student-role">{{ $testimonial->student_title }}</div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @include('frontend.partials.testimonial-card', ['testimonial' => $testimonial])
                         </div>
                     @endforeach
                 </div>
@@ -276,16 +239,7 @@
             <div class="row g-4">
                 @forelse($videos ?? collect([]) as $video)
                 <div class="col-lg-4 col-md-6">
-                    <div class="glass-panel video-card animate-on-scroll animate-delay-{{ ($loop->iteration - 1) % 3 + 1 }}">
-                        <a href="{{ $video->video_url }}" target="_blank" rel="noopener noreferrer" class="video-wrapper d-block text-decoration-none">
-                            <img src="{{ $video->thumbnail_url ?: $fa . '/images/course-webdev.svg' }}" alt="{{ $video->title }}" width="400" height="200" loading="lazy">
-                            <div class="play-btn"><i class="fas fa-play-circle"></i></div>
-                        </a>
-                        <div class="video-body">
-                            <h6>{{ $video->title }}</h6>
-                            <span><i class="fas fa-eye"></i> {{ number_format($video->views_count) }} مشاهدة</span>
-                        </div>
-                    </div>
+                    @include('frontend.partials.video-card', ['video' => $video])
                 </div>
                 @empty
                 <div class="col-12 text-center py-4">
@@ -312,22 +266,7 @@
             <div class="row g-4">
                 @forelse($blogPosts as $post)
                 <div class="col-lg-4 col-md-6">
-                    <a href="{{ route('blog.show', $post->slug) }}" class="blog-card-link" style="text-decoration:none;color:inherit;display:block;height:100%;">
-                        <div class="glass-panel blog-card animate-on-scroll animate-delay-{{ $loop->iteration }}">
-                            <div class="blog-img-wrapper">
-                                <img src="{{ $post->featured_image ? route('blog.image', ['filename' => basename($post->featured_image)]) : $fa . '/images/course-webdev.svg' }}" alt="{{ $post->featured_image_alt ?? $post->title }}" width="400" height="180" loading="lazy">
-                            </div>
-                            <div class="blog-body">
-                                <div class="blog-meta">
-                                    <span><i class="fas fa-calendar-alt"></i> {{ $post->published_at?->translatedFormat('d F Y') }}</span>
-                                    <span><i class="fas fa-tag"></i> {{ $post->category?->name ?? '—' }}</span>
-                                </div>
-                                <h5>{{ $post->title }}</h5>
-                                <p>{{ Str::limit(strip_tags($post->excerpt ?? $post->content), 80) }}</p>
-                                <span class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></span>
-                            </div>
-                        </div>
-                    </a>
+                    @include('frontend.partials.blog-card', ['post' => $post])
                 </div>
                 @empty
                 <div class="col-12 text-center py-5">
@@ -387,6 +326,7 @@
     <section class="section-padding newsletter-home-section" id="newsletter">
         <div class="container">
             <div class="newsletter-home-card glass-panel animate-on-scroll">
+                <div class="newsletter-home-glow" aria-hidden="true"></div>
                 <div class="newsletter-home-benefits">
                     <div class="newsletter-benefit-item">
                         <div class="newsletter-benefit-icon"><i class="fas fa-lightbulb"></i></div>
@@ -405,16 +345,23 @@
                         <span>رسائل حصرية</span>
                     </div>
                 </div>
-                <h2 class="newsletter-home-title">
-                    <i class="fas fa-paper-plane"></i> اشترك في نشرتنا البريدية
-                </h2>
-                <p class="newsletter-home-desc">احصل على آخر المقالات، العروض، وأخبار الدورات مباشرة في بريدك</p>
-                <div class="newsletter-home-form-wrap">
-                    @include('frontend.partials.newsletter-form', ['source' => 'home', 'variant' => 'home'])
+                <div class="newsletter-home-inner">
+                    <div class="newsletter-home-content">
+                        <span class="newsletter-home-badge">النشرة البريدية</span>
+                        <h2 class="newsletter-home-title">
+                            <i class="fas fa-paper-plane"></i> اشترك في نشرتنا البريدية
+                        </h2>
+                        <p class="newsletter-home-desc">احصل على آخر المقالات، العروض، وأخبار الدورات مباشرة في بريدك — مجاناً وبدون إزعاج.</p>
+                    </div>
+                    <div class="newsletter-home-action">
+                        <div class="newsletter-home-form-wrap">
+                            @include('frontend.partials.newsletter-form', ['source' => 'home', 'variant' => 'home'])
+                        </div>
+                        <p class="newsletter-home-privacy">
+                            <i class="fas fa-shield-alt"></i> نحترم خصوصيتك ولا نشارك بريدك مع أي جهة
+                        </p>
+                    </div>
                 </div>
-                <p class="newsletter-home-privacy">
-                    <i class="fas fa-shield-alt"></i> تحترم خصوصيتك ولا نشارك بريدك مع أي جهة
-                </p>
             </div>
         </div>
     </section>

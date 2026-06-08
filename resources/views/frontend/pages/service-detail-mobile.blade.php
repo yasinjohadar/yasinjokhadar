@@ -4,6 +4,19 @@
 @section('description', 'تطوير تطبيقات الجوال — بناء تطبيقات أندرويد و iOS باستخدام Dart و Flutter، واجهة واحدة وكود واحد لمنصتين مع ياسين جوخدار.')
 
 @section('content')
+    @php
+        $mobileTechnologies = [
+            ['name' => 'Dart', 'icon' => 'fas fa-code', 'color' => '#0175C2', 'hint' => 'لغة البرمجة'],
+            ['name' => 'Flutter', 'icon' => 'fas fa-mobile-alt', 'color' => '#02569B', 'hint' => 'إطار التطبيقات'],
+            ['name' => 'GetX / Provider', 'icon' => 'fas fa-cubes', 'color' => '#9C27B0', 'hint' => 'إدارة الحالة'],
+            ['name' => 'Firebase', 'icon' => 'fas fa-fire', 'color' => '#FFCA28', 'hint' => 'Backend سحابي'],
+            ['name' => 'REST API', 'icon' => 'fas fa-plug', 'color' => '#E60000', 'hint' => 'تكامل البيانات'],
+            ['name' => 'Git / GitHub', 'icon' => 'fab fa-github', 'color' => '#181717', 'hint' => 'إدارة الإصدارات'],
+            ['name' => 'Android Studio', 'icon' => 'fab fa-android', 'color' => '#3DDC84', 'hint' => 'بيئة التطوير'],
+            ['name' => 'VS Code', 'icon' => 'fas fa-laptop-code', 'color' => '#007ACC', 'hint' => 'محرر الكود'],
+        ];
+    @endphp
+
     <!-- ============ SERVICE BANNER ============ -->
     <section class="page-banner page-banner-service">
         <div class="page-banner-overlay"></div>
@@ -25,7 +38,7 @@
     </section>
 
     <!-- ============ SERVICE INTRO ============ -->
-    <section class="section-padding">
+    <section class="section-padding service-intro-section">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
@@ -38,6 +51,11 @@
                         <p class="service-detail-text">
                             نعتمد على Dart و Flutter لبناء تطبيقات سريعة وقابلة للصيانة، مع دعم إدارة الحالة (State Management) مثل GetX أو Provider، والتكامل مع Firebase وواجهات REST API. يشمل العمل التصميم، التطوير، الاختبار، والنشر على متجر Google Play ومتجر Apple App Store.
                         </p>
+                        <div class="service-detail-highlights">
+                            <span class="service-detail-highlight"><i class="fab fa-android"></i> Android</span>
+                            <span class="service-detail-highlight"><i class="fab fa-apple"></i> iOS</span>
+                            <span class="service-detail-highlight"><i class="fas fa-mobile-alt"></i> Flutter</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -58,7 +76,7 @@
     </section>
 
     <!-- ============ WHAT WE OFFER (تفاصيل الخدمة) ============ -->
-    <section class="section-padding" style="background: var(--clr-bg-secondary);">
+    <section class="section-padding service-offer-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">تفاصيل الخدمة</span>
@@ -112,47 +130,14 @@
         </div>
     </section>
 
-    <!-- ============ TECHNOLOGIES ============ -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-badge">التقنيات</span>
-                <h2>تقنيات نعتمد عليها</h2>
-                <p>أدوات وإطارات عمل حديثة لتطوير تطبيقات الجوال</p>
-            </div>
-            <div class="glass-panel service-tech-wrap animate-on-scroll">
-                <div class="row g-3">
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Dart</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Flutter</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">GetX / Provider</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Firebase</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">REST API</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Git / GitHub</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Android Studio</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">VS Code</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.partials.service-tech-section', [
+        'title' => 'تقنيات نعتمد عليها',
+        'subtitle' => 'أدوات وإطارات عمل حديثة لتطوير تطبيقات الجوال',
+        'technologies' => $mobileTechnologies,
+    ])
 
     <!-- ============ RELATED SERVICES ============ -->
-    <section class="section-padding" style="background: var(--clr-bg-secondary);">
+    <section class="section-padding service-related-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">تخصصات أخرى</span>

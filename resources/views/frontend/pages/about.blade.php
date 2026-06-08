@@ -4,6 +4,54 @@
 @section('description', 'تعرف على المدرب ياسين جوخدار - خبرة واسعة في تطوير البرمجيات والتدريب التقني.')
 
 @section('content')
+    @php
+        $aboutStats = [
+            ['icon' => 'fas fa-graduation-cap', 'count' => 50, 'label' => 'دورة تدريبية'],
+            ['icon' => 'fas fa-users', 'count' => 5000, 'label' => 'طالب وطالبة'],
+            ['icon' => 'fas fa-laptop-code', 'count' => 200, 'label' => 'مشروع منجز'],
+            ['icon' => 'fas fa-certificate', 'count' => 10, 'label' => 'شهادة معتمدة'],
+        ];
+
+        $aboutSpecialties = [
+            [
+                'title' => 'تطوير الواجهات الأمامية',
+                'icon' => 'fas fa-code',
+                'desc' => 'بناء واجهات مستخدم تفاعلية وجذابة باستخدام HTML5, CSS3, JavaScript, React.js, Vue.js و Next.js مع التركيز على التجاوب وتجربة المستخدم.',
+                'tags' => [
+                    ['name' => 'React', 'icon' => 'fab fa-react', 'color' => '#61DAFB'],
+                    ['name' => 'Vue.js', 'icon' => 'fab fa-vuejs', 'color' => '#42b883'],
+                    ['name' => 'Next.js', 'icon' => 'fas fa-layer-group', 'color' => '#1a1a2e'],
+                    ['name' => 'Bootstrap', 'icon' => 'fab fa-bootstrap', 'color' => '#7952B3'],
+                ],
+                'route' => 'web',
+            ],
+            [
+                'title' => 'تطوير الخوادم وAPI',
+                'icon' => 'fas fa-server',
+                'desc' => 'تصميم وبناء خوادم وواجهات برمجة التطبيقات RESTful APIs باستخدام Node.js, Express, NestJS, Python Django, وقواعد بيانات متنوعة.',
+                'tags' => [
+                    ['name' => 'Node.js', 'icon' => 'fab fa-node-js', 'color' => '#339933'],
+                    ['name' => 'Laravel', 'icon' => 'fab fa-laravel', 'color' => '#FF2D20'],
+                    ['name' => 'Django', 'icon' => 'fab fa-python', 'color' => '#3776AB'],
+                    ['name' => 'MySQL', 'icon' => 'fas fa-database', 'color' => '#4479A1'],
+                ],
+                'route' => 'servers',
+            ],
+            [
+                'title' => 'تطوير تطبيقات الموبايل',
+                'icon' => 'fas fa-mobile-alt',
+                'desc' => 'تطوير تطبيقات موبايل متعددة المنصات لنظامي Android و iOS باستخدام Flutter و React Native مع واجهات مستخدم احترافية.',
+                'tags' => [
+                    ['name' => 'Flutter', 'icon' => 'fas fa-mobile-alt', 'color' => '#02569B'],
+                    ['name' => 'React Native', 'icon' => 'fab fa-react', 'color' => '#61DAFB'],
+                    ['name' => 'Dart', 'icon' => 'fas fa-code', 'color' => '#0175C2'],
+                    ['name' => 'Firebase', 'icon' => 'fas fa-fire', 'color' => '#FFCA28'],
+                ],
+                'route' => 'mobile',
+            ],
+        ];
+    @endphp
+
     <!-- ============ PAGE BANNER (حول المدرب) ============ -->
     <section class="page-banner page-banner-about">
         <div class="page-banner-overlay"></div>
@@ -23,60 +71,52 @@
     </section>
 
     <!-- ============ ABOUT INTRO ============ -->
-    <section class="section-padding">
+    <section class="section-padding about-intro-section">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-5">
-                    <div class="hero-image-wrapper animate-on-scroll">
-                        <div class="hero-ring"></div>
-                        <img src="{{ $fa }}/images/hero.png" alt="ياسين جوخدار" class="hero-img" width="350" height="350" loading="lazy">
+                    <div class="about-profile-wrap animate-on-scroll">
+                        <div class="about-profile-glow about-profile-glow--1" aria-hidden="true"></div>
+                        <div class="about-profile-glow about-profile-glow--2" aria-hidden="true"></div>
+                        <div class="hero-image-wrapper about-profile-image">
+                            <div class="hero-ring"></div>
+                            <img src="{{ $fa }}/images/hero.png" alt="ياسين جوخدار" class="hero-img" width="350" height="350" loading="lazy">
+                        </div>
+                        <div class="about-profile-badge">
+                            <i class="fas fa-award"></i>
+                            <span>+10 سنوات خبرة</span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="animate-on-scroll">
-                        <span class="section-badge" style="display:inline-block; margin-bottom:15px;">من أنا؟</span>
-                        <h2 style="font-weight:800; font-size:2rem; margin-bottom:20px;">ياسين جوخدار</h2>
-                        <p style="font-size:1.05rem; line-height:2; color:var(--clr-text-secondary);">
+                    <div class="about-intro-content animate-on-scroll">
+                        <span class="section-badge about-intro-badge">من أنا؟</span>
+                        <h2 class="about-intro-title">ياسين جوخدار</h2>
+                        <p class="about-intro-text">
                             مدرب ومطور برمجيات سوري الجنسية، شغوف بعالم التكنولوجيا والبرمجة منذ أكثر من 10 سنوات.
                             بدأت مسيرتي في عالم تطوير الويب ثم توسعت لتشمل تطوير تطبيقات الموبايل، قواعد البيانات،
                             وأنظمة إدارة المحتوى.
                         </p>
-                        <p style="font-size:1.05rem; line-height:2; color:var(--clr-text-secondary);">
+                        <p class="about-intro-text">
                             أؤمن بأن التعليم العملي هو أفضل طريقة لاكتساب المهارات البرمجية، لذلك أركز في دوراتي
-                            التدريبية على المشاريع الحقيقية
-                            والتطبيق العملي. قمت بتدريب أكثر من 5000 طالب وطالبة في مختلف مجالات البرمجة.
+                            التدريبية على المشاريع الحقيقية والتطبيق العملي. قمت بتدريب آلاف الطلاب في مختلف مجالات البرمجة.
                         </p>
 
-                        <!-- Quick Facts -->
-                        <div class="row g-3 mt-3">
+                        <div class="about-highlight">
+                            <i class="fas fa-quote-right"></i>
+                            <p>هدفي هو تحويل المعرفة التقنية إلى مهارات عملية تُمكّن كل متعلم من بناء مشاريع حقيقية بثقة.</p>
+                        </div>
+
+                        <div class="row g-3 about-stats-grid">
+                            @foreach($aboutStats as $index => $stat)
                             <div class="col-sm-6">
-                                <div class="glass-panel" style="padding:18px; text-align:center;">
-                                    <i class="fas fa-graduation-cap"
-                                        style="font-size:1.5rem; color:var(--clr-primary); margin-bottom:8px; display:block;"></i>
-                                    <strong>+50 دورة تدريبية</strong>
+                                <div class="about-stat-card glass-panel animate-on-scroll animate-delay-{{ ($index % 4) + 1 }}">
+                                    <span class="about-stat-icon"><i class="{{ $stat['icon'] }}"></i></span>
+                                    <span class="about-stat-num counter-num" data-count="{{ $stat['count'] }}">0</span>
+                                    <span class="about-stat-label">{{ $stat['label'] }}</span>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="glass-panel" style="padding:18px; text-align:center;">
-                                    <i class="fas fa-users"
-                                        style="font-size:1.5rem; color:var(--clr-primary); margin-bottom:8px; display:block;"></i>
-                                    <strong>+5000 طالب</strong>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="glass-panel" style="padding:18px; text-align:center;">
-                                    <i class="fas fa-laptop-code"
-                                        style="font-size:1.5rem; color:var(--clr-primary); margin-bottom:8px; display:block;"></i>
-                                    <strong>+200 مشروع</strong>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="glass-panel" style="padding:18px; text-align:center;">
-                                    <i class="fas fa-certificate"
-                                        style="font-size:1.5rem; color:var(--clr-primary); margin-bottom:8px; display:block;"></i>
-                                    <strong>+10 شهادات معتمدة</strong>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -85,7 +125,7 @@
     </section>
 
     <!-- ============ TIMELINE ============ -->
-    <section class="section-padding" style="background: var(--clr-bg-secondary);">
+    <section class="section-padding about-journey-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">المسيرة المهنية</span>
@@ -94,14 +134,14 @@
             </div>
 
             @if($journeyCategories->isNotEmpty())
-            <div class="journey-filter animate-on-scroll mb-4" id="journeyFilter">
-                <div class="d-flex flex-wrap justify-content-center gap-2">
+            <div class="journey-filter-bar glass-panel animate-on-scroll" id="journeyFilter">
+                <div class="journey-filter-categories">
                     <button type="button" class="journey-filter-btn {{ !$categorySlug ? 'active' : '' }}" data-category="">
-                        الكل
+                        <i class="fas fa-th-large"></i> الكل
                     </button>
                     @foreach($journeyCategories as $cat)
                         <button type="button" class="journey-filter-btn {{ $categorySlug === $cat->slug ? 'active' : '' }}" data-category="{{ $cat->slug }}">
-                            @if($cat->icon)<i class="{{ $cat->icon }} me-1"></i>@endif
+                            @if($cat->icon)<i class="{{ $cat->icon }}"></i>@endif
                             {{ $cat->name }}
                         </button>
                     @endforeach
@@ -110,15 +150,20 @@
             @endif
 
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="timeline animate-on-scroll" id="journeyTimeline">
                         @forelse($journeyMilestones as $m)
                             <div class="timeline-item" data-category="{{ $m->category->slug }}">
-                                <span class="year">{{ $m->year }}</span>
-                                <h5>{{ $m->title }}</h5>
-                                @if($m->description)
-                                    <p>{{ $m->description }}</p>
-                                @endif
+                                <div class="timeline-card glass-panel">
+                                    <span class="year">{{ $m->year }}</span>
+                                    @if($m->category)
+                                    <span class="timeline-category">{{ $m->category->name }}</span>
+                                    @endif
+                                    <h5>{{ $m->title }}</h5>
+                                    @if($m->description)
+                                        <p>{{ $m->description }}</p>
+                                    @endif
+                                </div>
                             </div>
                         @empty
                             <div class="text-center py-5 journey-empty-all" id="journeyEmptyAll">
@@ -134,115 +179,107 @@
         </div>
     </section>
 
-    <!-- ============ مهاراتي التفصيلية (أشرطة التقدم) ============ -->
-    <section class="section-padding" style="background: var(--clr-bg-secondary);">
+    @php
+        $aboutSkillCategories = [
+            [
+                'title' => 'المهارات البرمجية — اللغات',
+                'icon' => 'fas fa-code',
+                'accent' => '#E60000',
+                'skills' => [
+                    ['name' => 'JavaScript / TypeScript', 'level' => 92, 'icon' => 'fab fa-js-square', 'color' => '#F7DF1E'],
+                    ['name' => 'Python', 'level' => 88, 'icon' => 'fab fa-python', 'color' => '#3776AB'],
+                    ['name' => 'HTML5 / CSS3 / SASS', 'level' => 95, 'icon' => 'fab fa-html5', 'color' => '#E34F26'],
+                    ['name' => 'PHP', 'level' => 80, 'icon' => 'fab fa-php', 'color' => '#777BB4'],
+                    ['name' => 'Dart', 'level' => 82, 'icon' => 'fas fa-code', 'color' => '#0175C2'],
+                ],
+            ],
+            [
+                'title' => 'أطر العمل والمكتبات',
+                'icon' => 'fas fa-puzzle-piece',
+                'accent' => '#61DAFB',
+                'skills' => [
+                    ['name' => 'React.js', 'level' => 90, 'icon' => 'fab fa-react', 'color' => '#61DAFB'],
+                    ['name' => 'Node.js / Express', 'level' => 88, 'icon' => 'fab fa-node-js', 'color' => '#339933'],
+                    ['name' => 'Flutter', 'level' => 85, 'icon' => 'fas fa-mobile-alt', 'color' => '#02569B'],
+                    ['name' => 'Bootstrap / Tailwind', 'level' => 92, 'icon' => 'fab fa-bootstrap', 'color' => '#7952B3'],
+                    ['name' => 'Next.js / Nuxt', 'level' => 82, 'icon' => 'fas fa-layer-group', 'color' => '#1a1a2e'],
+                ],
+            ],
+            [
+                'title' => 'قواعد البيانات',
+                'icon' => 'fas fa-database',
+                'accent' => '#47A248',
+                'skills' => [
+                    ['name' => 'MongoDB', 'level' => 87, 'icon' => 'fas fa-leaf', 'color' => '#47A248'],
+                    ['name' => 'MySQL / PostgreSQL', 'level' => 85, 'icon' => 'fas fa-database', 'color' => '#4479A1'],
+                    ['name' => 'Firebase', 'level' => 83, 'icon' => 'fas fa-fire', 'color' => '#FFCA28'],
+                    ['name' => 'Redis', 'level' => 75, 'icon' => 'fas fa-bolt', 'color' => '#DC382D'],
+                ],
+            ],
+            [
+                'title' => 'أدوات ومنصات',
+                'icon' => 'fas fa-tools',
+                'accent' => '#2496ED',
+                'skills' => [
+                    ['name' => 'Git / GitHub', 'level' => 92, 'icon' => 'fab fa-github', 'color' => '#181717'],
+                    ['name' => 'Docker', 'level' => 78, 'icon' => 'fab fa-docker', 'color' => '#2496ED'],
+                    ['name' => 'Linux / Shell', 'level' => 85, 'icon' => 'fab fa-linux', 'color' => '#FCC624'],
+                    ['name' => 'Figma / UI Design', 'level' => 80, 'icon' => 'fab fa-figma', 'color' => '#F24E1E'],
+                ],
+            ],
+        ];
+    @endphp
+
+    <!-- ============ مهاراتي التفصيلية ============ -->
+    <section class="section-padding about-skills-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">مهاراتي</span>
                 <h2>مهاراتي التفصيلية</h2>
                 <p>لغات برمجة، أطر عمل، قواعد بيانات وأدوات أتقنها وأستخدمها في مشاريعي ودوراتي</p>
             </div>
-            <div class="skills-detailed animate-on-scroll">
+
+            <div class="skills-detailed animate-on-scroll" id="aboutSkillsDetailed">
                 <div class="row g-4">
+                    @foreach($aboutSkillCategories as $catIndex => $category)
                     <div class="col-lg-6">
-                        <div class="glass-panel skills-category">
-                            <h4 class="skills-category-title"><i class="fas fa-code"></i> المهارات البرمجية — اللغات</h4>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>JavaScript / TypeScript</span><span class="skill-progress-pct">92%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:92%"></div></div>
+                        <div class="glass-panel skills-category" style="--cat-accent: {{ $category['accent'] }}">
+                            <div class="skills-category-header">
+                                <span class="skills-category-icon"><i class="{{ $category['icon'] }}"></i></span>
+                                <h4 class="skills-category-title">{{ $category['title'] }}</h4>
                             </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Python</span><span class="skill-progress-pct">88%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:88%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>HTML5 / CSS3 / SASS</span><span class="skill-progress-pct">95%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:95%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>PHP</span><span class="skill-progress-pct">80%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:80%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Dart</span><span class="skill-progress-pct">82%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:82%"></div></div>
+                            <div class="skills-tech-list">
+                                @foreach($category['skills'] as $skill)
+                                <div class="skill-tech-item">
+                                    <span class="skill-tech-icon" style="--tech-color: {{ $skill['color'] }}">
+                                        <i class="{{ $skill['icon'] }}"></i>
+                                    </span>
+                                    <div class="skill-tech-body">
+                                        <div class="skill-progress-head">
+                                            <span class="skill-tech-name">{{ $skill['name'] }}</span>
+                                            <span class="skill-progress-pct">{{ $skill['level'] }}%</span>
+                                        </div>
+                                        <div class="skill-progress-bar">
+                                            <div
+                                                class="skill-progress-fill"
+                                                data-level="{{ $skill['level'] }}"
+                                                style="--fill-color: {{ $skill['color'] }}"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="glass-panel skills-category">
-                            <h4 class="skills-category-title"><i class="fas fa-puzzle-piece"></i> أطر العمل والمكتبات</h4>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>React.js</span><span class="skill-progress-pct">90%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:90%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Node.js / Express</span><span class="skill-progress-pct">88%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:88%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Flutter</span><span class="skill-progress-pct">85%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:85%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Bootstrap / Tailwind</span><span class="skill-progress-pct">92%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:92%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Next.js / Nuxt</span><span class="skill-progress-pct">82%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:82%"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="glass-panel skills-category">
-                            <h4 class="skills-category-title"><i class="fas fa-database"></i> قواعد البيانات</h4>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>MongoDB</span><span class="skill-progress-pct">87%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:87%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>MySQL / PostgreSQL</span><span class="skill-progress-pct">85%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:85%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Firebase</span><span class="skill-progress-pct">83%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:83%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Redis</span><span class="skill-progress-pct">75%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:75%"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="glass-panel skills-category">
-                            <h4 class="skills-category-title"><i class="fas fa-tools"></i> أدوات ومنصات</h4>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Git / GitHub</span><span class="skill-progress-pct">92%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:92%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Docker</span><span class="skill-progress-pct">78%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:78%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Linux / Shell</span><span class="skill-progress-pct">85%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:85%"></div></div>
-                            </div>
-                            <div class="skill-progress-item">
-                                <div class="skill-progress-head"><span>Figma / UI Design</span><span class="skill-progress-pct">80%</span></div>
-                                <div class="skill-progress-bar"><div class="skill-progress-fill" style="width:80%"></div></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============ SKILLS DETAILED ============ -->
-    <section class="section-padding" id="specialties">
+    <!-- ============ SPECIALTIES ============ -->
+    <section class="section-padding about-specialties-section" id="specialties">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">التخصصات</span>
@@ -250,82 +287,27 @@
                 <p>المجالات التقنية التي أملك خبرة متعمقة فيها</p>
             </div>
             <div class="row g-4">
+                @foreach($aboutSpecialties as $index => $specialty)
                 <div class="col-lg-4 col-md-6">
-                    <div class="glass-panel animate-on-scroll animate-delay-1" style="padding:30px; height:100%;">
-                        <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
-                            <div
-                                style="width:55px; height:55px; border-radius:var(--radius-md); background:linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.4rem; flex-shrink:0;">
-                                <i class="fas fa-code"></i></div>
-                            <h5 style="font-weight:700; margin:0;">تطوير الواجهات الأمامية</h5>
+                    <div class="glass-panel about-specialty-card animate-on-scroll animate-delay-{{ $index + 1 }}">
+                        <div class="about-specialty-header">
+                            <span class="about-specialty-icon"><i class="{{ $specialty['icon'] }}"></i></span>
+                            <h5>{{ $specialty['title'] }}</h5>
                         </div>
-                        <p style="color:var(--clr-text-secondary); font-size:0.95rem;">
-                            بناء واجهات مستخدم تفاعلية وجذابة باستخدام HTML5, CSS3, JavaScript, React.js, Vue.js و
-                            Next.js مع التركيز على التجاوب وتجربة المستخدم.
-                        </p>
-                        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:15px;">
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">React</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Vue.js</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Next.js</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Bootstrap</span>
+                        <p class="about-specialty-desc">{{ $specialty['desc'] }}</p>
+                        <div class="about-specialty-tags">
+                            @foreach($specialty['tags'] as $tag)
+                            <span class="about-tech-tag" style="--tech-color: {{ $tag['color'] }}">
+                                <i class="{{ $tag['icon'] }}"></i> {{ $tag['name'] }}
+                            </span>
+                            @endforeach
                         </div>
-                        <a href="{{ route('service.show', 'web') }}" class="btn-outline-custom mt-3" style="display:inline-flex; padding:8px 18px; font-size:0.88rem;"><i class="fas fa-arrow-left"></i> اعرف المزيد</a>
+                        <a href="{{ route('service.show', $specialty['route']) }}" class="about-specialty-link">
+                            اعرف المزيد <i class="fas fa-arrow-left"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="glass-panel animate-on-scroll animate-delay-2" style="padding:30px; height:100%;">
-                        <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
-                            <div
-                                style="width:55px; height:55px; border-radius:var(--radius-md); background:linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.4rem; flex-shrink:0;">
-                                <i class="fas fa-server"></i></div>
-                            <h5 style="font-weight:700; margin:0;">تطوير الخوادم وAPI</h5>
-                        </div>
-                        <p style="color:var(--clr-text-secondary); font-size:0.95rem;">
-                            تصميم وبناء خوادم وواجهات برمجة التطبيقات RESTful APIs باستخدام Node.js, Express, NestJS,
-                            Python Django, وقواعد بيانات متنوعة.
-                        </p>
-                        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:15px;">
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Node.js</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">NestJS</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Django</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">MySQL</span>
-                        </div>
-                        <a href="{{ route('service.show', 'servers') }}" class="btn-outline-custom mt-3" style="display:inline-flex; padding:8px 18px; font-size:0.88rem;"><i class="fas fa-arrow-left"></i> اعرف المزيد</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="glass-panel animate-on-scroll animate-delay-3" style="padding:30px; height:100%;">
-                        <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
-                            <div
-                                style="width:55px; height:55px; border-radius:var(--radius-md); background:linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.4rem; flex-shrink:0;">
-                                <i class="fas fa-mobile-alt"></i></div>
-                            <h5 style="font-weight:700; margin:0;">تطوير تطبيقات الموبايل</h5>
-                        </div>
-                        <p style="color:var(--clr-text-secondary); font-size:0.95rem;">
-                            تطوير تطبيقات موبايل متعددة المنصات لنظامي Android و iOS باستخدام Flutter و React Native مع
-                            واجهات مستخدم احترافية.
-                        </p>
-                        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:15px;">
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Flutter</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">React
-                                Native</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Dart</span>
-                            <span
-                                style="background:var(--clr-surface); padding:4px 12px; border-radius:50px; font-size:0.78rem; color:var(--clr-text-secondary);">Firebase</span>
-                        </div>
-                        <a href="{{ route('service.show', 'mobile') }}" class="btn-outline-custom mt-3" style="display:inline-flex; padding:8px 18px; font-size:0.88rem;"><i class="fas fa-arrow-left"></i> اعرف المزيد</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -388,6 +370,43 @@
     const urlParams = new URLSearchParams(window.location.search);
     const initialCat = urlParams.get('category') || '';
     if (initialCat) applyFilter(initialCat, false);
+})();
+
+(function() {
+    const skillsBlock = document.getElementById('aboutSkillsDetailed');
+    if (!skillsBlock) return;
+
+    const fills = skillsBlock.querySelectorAll('.skill-progress-fill');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) {
+        fills.forEach(fill => {
+            fill.style.width = (fill.dataset.level || '0') + '%';
+        });
+        return;
+    }
+
+    fills.forEach(fill => { fill.style.width = '0%'; });
+
+    const animateBars = () => {
+        fills.forEach((fill, i) => {
+            const level = fill.dataset.level || '0';
+            setTimeout(() => {
+                fill.style.width = level + '%';
+            }, 120 + i * 60);
+        });
+    };
+
+    const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateBars();
+                barObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    barObserver.observe(skillsBlock);
 })();
 </script>
 @endsection

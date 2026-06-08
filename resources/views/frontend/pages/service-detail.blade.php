@@ -4,6 +4,21 @@
 @section('description', 'تطوير تطبيقات الويب — تصميم وتطوير مواقع وتطبيقات ويب حديثة ومتجاوبة واحترافية مع ياسين جوخدار.')
 
 @section('content')
+    @php
+        $webTechnologies = [
+            ['name' => 'HTML5 / CSS3', 'icon' => 'fab fa-html5', 'color' => '#E34F26'],
+            ['name' => 'JavaScript', 'icon' => 'fab fa-js-square', 'color' => '#F7DF1E'],
+            ['name' => 'TypeScript', 'icon' => 'fas fa-code', 'color' => '#3178C6'],
+            ['name' => 'React.js', 'icon' => 'fab fa-react', 'color' => '#61DAFB'],
+            ['name' => 'Vue.js / Next.js', 'icon' => 'fab fa-vuejs', 'color' => '#42b883'],
+            ['name' => 'Node.js', 'icon' => 'fab fa-node-js', 'color' => '#339933'],
+            ['name' => 'MongoDB / MySQL', 'icon' => 'fas fa-database', 'color' => '#4479A1'],
+            ['name' => 'Bootstrap / Tailwind', 'icon' => 'fab fa-bootstrap', 'color' => '#7952B3'],
+            ['name' => 'REST API', 'icon' => 'fas fa-plug', 'color' => '#E60000'],
+            ['name' => 'Git / GitHub', 'icon' => 'fab fa-github', 'color' => '#181717'],
+        ];
+    @endphp
+
     <!-- ============ SERVICE BANNER ============ -->
     <section class="page-banner page-banner-service">
         <div class="page-banner-overlay"></div>
@@ -112,47 +127,11 @@
         </div>
     </section>
 
-    <!-- ============ TECHNOLOGIES ============ -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-badge">التقنيات</span>
-                <h2>تقنيات نعتمد عليها</h2>
-                <p>أدوات وإطارات عمل حديثة لضمان جودة واحترافية المشروع</p>
-            </div>
-            <div class="glass-panel service-tech-wrap animate-on-scroll">
-                <div class="row g-3">
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">HTML5 / CSS3</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">JavaScript / TypeScript</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">React.js</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Vue.js / Next.js</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Node.js / Express</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">MongoDB / MySQL</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Bootstrap / Tailwind</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">REST API</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">Git / GitHub</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.partials.service-tech-section', [
+        'title' => 'تقنيات نعتمد عليها',
+        'subtitle' => 'أدوات وإطارات عمل حديثة لضمان جودة واحترافية المشروع',
+        'technologies' => $webTechnologies,
+    ])
 
     <!-- ============ RELATED SERVICES ============ -->
     <section class="section-padding" style="background: var(--clr-bg-secondary);">

@@ -36,25 +36,7 @@
             <div class="row g-4">
                 @forelse($courses as $course)
                 <div class="col-lg-3 col-md-6 course-filter-item" data-category="{{ $course->category->slug ?? '' }}">
-                    <a href="{{ route('course.show', $course->slug) }}" class="course-card-link">
-                        <div class="glass-panel course-card animate-on-scroll">
-                            <div class="course-img-wrapper">
-                                <img src="{{ $course->image ? route('course.image', ['filename' => basename($course->image)]) : $fa . '/images/course-webdev.svg' }}" alt="{{ $course->title }}" width="400" height="200" loading="lazy">
-                                @if($course->badge)
-                                <span class="course-badge">{{ $course->badge }}</span>
-                                @endif
-                            </div>
-                            <div class="course-body">
-                                <h5>{{ $course->title }}</h5>
-                                <p>{{ $course->short_description ?? Str::limit($course->description ?? '', 100) }}</p>
-                            </div>
-                            <div class="course-footer">
-                                <span><i class="fas fa-users"></i> {{ number_format($course->students_count) }} طالب</span>
-                                <span><i class="fas fa-clock"></i> {{ $course->duration_hours ? $course->duration_hours . ' ساعة' : '-' }}</span>
-                                <span class="price">${{ number_format($course->price, 2) }}</span>
-                            </div>
-                        </div>
-                    </a>
+                    @include('frontend.partials.course-card', ['course' => $course])
                 </div>
                 @empty
                 <div class="col-12 text-center py-5">

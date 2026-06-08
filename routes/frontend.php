@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TestimonialSubmissionController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\NewsletterController;
 use App\Models\BlogPost;
@@ -18,7 +19,7 @@ use App\Models\JourneyCategory;
 use App\Models\JourneyMilestone;
 
 Route::get('/blog', function () {
-    $categories = BlogCategory::active()->orderBy('order')->get();
+    $categories = BlogCategory::active()->withCount('publishedPosts')->orderBy('order')->get();
     $featuredPost = BlogPost::published()
         ->with('category', 'author')
         ->where('is_featured', true)
@@ -158,6 +159,9 @@ Route::get('/testimonials', function () {
 
     return view('frontend.pages.testimonials', compact('testimonials'));
 })->name('testimonials');
+
+Route::get('/testimonials/submit', [TestimonialSubmissionController::class, 'create'])->name('testimonials.submit');
+Route::post('/testimonials/submit', [TestimonialSubmissionController::class, 'store'])->name('testimonials.submit.store');
 
 Route::get('/consultation', function () {
     return view('frontend.pages.consultation');

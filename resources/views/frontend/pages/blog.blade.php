@@ -23,23 +23,56 @@
     </section>
 
     <!-- ============ BLOG FILTER + SEARCH ============ -->
-    <section class="section-padding" style="padding-top: 30px;">
+    <section class="section-padding blog-listing-section">
         <div class="container">
-            <div class="glass-panel animate-on-scroll" style="padding: 25px 30px; margin-bottom: 40px;">
-                <div class="row align-items-center g-3">
-                    <div class="col-lg-5">
-                        <div style="position: relative;">
-                            <input type="text" class="form-control" placeholder="ابحث في المدونة..." id="blogSearch"
-                                style="background: var(--clr-surface); border: 1px solid var(--clr-border); color: var(--clr-text); padding: 12px 18px 12px 45px; border-radius: var(--radius-md); font-family: var(--font-family);">
-                            <i class="fas fa-search"
-                                style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--clr-text-muted);"></i>
+            <div class="blog-filter-bar glass-panel animate-on-scroll">
+                <div class="blog-filter-header">
+                    <div class="blog-filter-label">
+                        <span class="blog-filter-label-icon"><i class="fas fa-sliders-h"></i></span>
+                        <div>
+                            <strong>تصفية المقالات</strong>
+                            <small>ابحث أو اختر التصنيف المناسب</small>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-                        <div class="courses-filter" style="margin-bottom: 0; justify-content: flex-start;">
-                            <button class="filter-btn active" data-filter="all">الكل</button>
+                    <p class="blog-filter-status" id="blogFilterStatus" aria-live="polite"></p>
+                </div>
+
+                <div class="blog-filter-toolbar">
+                    <div class="blog-filter-search">
+                        <i class="fas fa-search blog-filter-search-icon" aria-hidden="true"></i>
+                        <input
+                            type="search"
+                            id="blogSearch"
+                            placeholder="ابحث في المدونة..."
+                            autocomplete="off"
+                            aria-label="ابحث في المدونة"
+                        >
+                        <button type="button" class="blog-filter-search-clear" id="blogSearchClear" aria-label="مسح البحث" hidden>
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="blog-filter-categories-wrap">
+                        <div class="blog-filter-categories" id="blogFilterCategories" role="tablist" aria-label="تصنيفات المدونة">
+                            <button type="button" class="blog-filter-pill active" data-filter="all" role="tab" aria-selected="true">
+                                <i class="fas fa-th-large"></i>
+                                <span>الكل</span>
+                            </button>
                             @foreach($categories as $cat)
-                            <button class="filter-btn" data-filter="{{ $cat->slug }}">{{ $cat->name }}</button>
+                            <button
+                                type="button"
+                                class="blog-filter-pill"
+                                data-filter="{{ $cat->slug }}"
+                                role="tab"
+                                aria-selected="false"
+                                @if($cat->color) style="--pill-color: {{ $cat->color }}" @endif
+                            >
+                                @if($cat->icon)<i class="{{ $cat->icon }}"></i>@endif
+                                <span>{{ $cat->name }}</span>
+                                @if($cat->published_posts_count > 0)
+                                <span class="blog-filter-count">{{ $cat->published_posts_count }}</span>
+                                @endif
+                            </button>
                             @endforeach
                         </div>
                     </div>
@@ -48,7 +81,7 @@
 
             <!-- ============ FEATURED POST ============ -->
             @if($featuredPost)
-            <div class="row g-4 mb-5">
+            <div class="row g-4 mb-5" id="blogFeatured" data-category="{{ $featuredPost->category?->slug ?? 'all' }}" data-search="{{ $featuredPost->title }}">
                 <div class="col-12">
                     <a href="{{ route('blog.show', $featuredPost->slug) }}" style="text-decoration:none;color:inherit;display:block;">
                         <div class="glass-panel animate-on-scroll" style="overflow: hidden; border-radius: var(--radius-xl);">
@@ -90,40 +123,30 @@
             @endif
 
             <!-- ============ BLOG POSTS GRID ============ -->
-            <div class="row g-4">
+            <div class="row g-4" id="blogPostsGrid">
                 @forelse($posts as $post)
-                <div class="col-lg-4 col-md-6 course-filter-item" data-category="{{ $post->category?->slug ?? 'all' }}">
-                    <a href="{{ route('blog.show', $post->slug) }}" class="blog-card-link" style="text-decoration:none;color:inherit;display:block;height:100%;">
-                        <div class="glass-panel blog-card animate-on-scroll animate-delay-{{ ($loop->iteration % 3) ?: 3 }}">
-                            <div class="blog-img-wrapper">
-                                <img src="{{ $post->featured_image ? route('blog.image', ['filename' => basename($post->featured_image)]) : $fa . '/images/course-webdev.svg' }}" alt="{{ $post->featured_image_alt ?? $post->title }}" width="400" height="200" loading="lazy">
-                                <div style="position: absolute; top: 12px; right: 12px; background: var(--clr-primary); color: #fff; padding: 3px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 600;">
-                                    {{ $post->category?->name ?? '—' }}
-                                </div>
-                            </div>
-                            <div class="blog-body">
-                                <div class="blog-meta">
-                                    <span><i class="fas fa-calendar-alt"></i> {{ $post->published_at?->translatedFormat('d F Y') }}</span>
-                                    <span><i class="fas fa-clock"></i> {{ $post->reading_time ?? '—' }} دقيقة</span>
-                                </div>
-                                <h5>{{ $post->title }}</h5>
-                                <p>{{ Str::limit(strip_tags($post->excerpt ?? $post->content), 100) }}</p>
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--clr-border);">
-                                    <div style="display: flex; align-items: center; gap: 8px;">
-                                        <img src="{{ $fa }}/images/logo.svg" alt="الكاتب" width="30" height="30" loading="lazy" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--clr-primary);">
-                                        <span style="font-size: 0.8rem; font-weight: 600;">{{ $post->author?->name ?? 'ياسين جوخدار' }}</span>
-                                    </div>
-                                    <span class="read-more" style="margin-top: 0;">المزيد <i class="fas fa-arrow-left"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                <div class="col-lg-4 col-md-6 blog-filter-item" data-category="{{ $post->category?->slug ?? 'all' }}" data-search="{{ $post->title }}">
+                    @include('frontend.partials.blog-card', [
+                        'post' => $post,
+                        'showAuthor' => true,
+                        'excerptLimit' => 100,
+                        'delayClass' => 'animate-delay-' . (($loop->iteration % 3) ?: 3),
+                    ])
                 </div>
                 @empty
                 <div class="col-12 text-center py-5">
                     <p class="text-muted">لا توجد تدوينات حالياً.</p>
                 </div>
                 @endforelse
+            </div>
+
+            <div class="blog-filter-empty" id="blogFilterEmpty" hidden>
+                <span class="blog-filter-empty-icon"><i class="fas fa-search"></i></span>
+                <h3>لا توجد نتائج</h3>
+                <p>جرّب كلمة بحث مختلفة أو اختر تصنيفاً آخر</p>
+                <button type="button" class="btn-outline-custom" id="blogFilterReset">
+                    <i class="fas fa-redo"></i> إعادة التصفية
+                </button>
             </div>
 
             <!-- Pagination -->

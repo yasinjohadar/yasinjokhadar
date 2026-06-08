@@ -4,6 +4,90 @@
 @section('description', 'DevOps — تكامل ونشر مستمر (CI/CD)، حاويات وكوبرنيتس، البنية كود (IaC)، سحابة ومراقبة مع ياسين جوخدار.')
 
 @section('content')
+    @php
+        $devopsCategories = [
+            [
+                'title' => 'CI/CD وبناء الأنابيب',
+                'icon' => 'fas fa-sync-alt',
+                'technologies' => [
+                    ['name' => 'Jenkins', 'icon' => 'fas fa-cogs', 'color' => '#D24939'],
+                    ['name' => 'GitLab CI/CD', 'icon' => 'fab fa-gitlab', 'color' => '#FC6D26'],
+                    ['name' => 'GitHub Actions', 'icon' => 'fab fa-github', 'color' => '#181717'],
+                    ['name' => 'CircleCI', 'icon' => 'fas fa-circle-notch', 'color' => '#343434'],
+                    ['name' => 'Travis CI', 'icon' => 'fas fa-code-branch', 'color' => '#3EAAAF'],
+                    ['name' => 'Azure DevOps', 'icon' => 'fab fa-microsoft', 'color' => '#0078D4'],
+                    ['name' => 'Argo CD', 'icon' => 'fas fa-ship', 'color' => '#EF7B4D'],
+                    ['name' => 'Flux', 'icon' => 'fas fa-water', 'color' => '#5468FF'],
+                ],
+            ],
+            [
+                'title' => 'حاويات وأوركستريشن',
+                'icon' => 'fab fa-docker',
+                'technologies' => [
+                    ['name' => 'Docker', 'icon' => 'fab fa-docker', 'color' => '#2496ED'],
+                    ['name' => 'Kubernetes', 'icon' => 'fas fa-dharmachakra', 'color' => '#326CE5'],
+                    ['name' => 'Helm', 'icon' => 'fas fa-anchor', 'color' => '#0F1689'],
+                    ['name' => 'Kustomize', 'icon' => 'fas fa-layer-group', 'color' => '#326CE5'],
+                    ['name' => 'Docker Compose', 'icon' => 'fab fa-docker', 'color' => '#2496ED'],
+                    ['name' => 'containerd', 'icon' => 'fas fa-box', 'color' => '#575757'],
+                    ['name' => 'Podman', 'icon' => 'fas fa-cube', 'color' => '#892CA0'],
+                    ['name' => 'Rancher', 'icon' => 'fas fa-cow', 'color' => '#0075A8'],
+                ],
+            ],
+            [
+                'title' => 'سحابة ومنصات',
+                'icon' => 'fas fa-cloud',
+                'technologies' => [
+                    ['name' => 'AWS', 'icon' => 'fab fa-aws', 'color' => '#FF9900'],
+                    ['name' => 'Azure', 'icon' => 'fab fa-microsoft', 'color' => '#0078D4'],
+                    ['name' => 'Google Cloud', 'icon' => 'fab fa-google', 'color' => '#4285F4'],
+                    ['name' => 'DigitalOcean', 'icon' => 'fab fa-digital-ocean', 'color' => '#0080FF'],
+                    ['name' => 'EKS / AKS / GKE', 'icon' => 'fas fa-dharmachakra', 'color' => '#326CE5'],
+                    ['name' => 'Lambda / Serverless', 'icon' => 'fas fa-bolt', 'color' => '#FF9900'],
+                ],
+            ],
+            [
+                'title' => 'بنية كود وإدارة تكوين (IaC)',
+                'icon' => 'fas fa-code-branch',
+                'technologies' => [
+                    ['name' => 'Terraform', 'icon' => 'fas fa-mountain', 'color' => '#844FBA'],
+                    ['name' => 'Ansible', 'icon' => 'fas fa-robot', 'color' => '#EE0000'],
+                    ['name' => 'Puppet', 'icon' => 'fas fa-theater-masks', 'color' => '#FFAE1A'],
+                    ['name' => 'Chef', 'icon' => 'fas fa-utensils', 'color' => '#F09820'],
+                    ['name' => 'Pulumi', 'icon' => 'fas fa-cloud-upload-alt', 'color' => '#8A3391'],
+                    ['name' => 'CloudFormation', 'icon' => 'fab fa-aws', 'color' => '#FF9900'],
+                ],
+            ],
+            [
+                'title' => 'مراقبة وسجلات وأمان',
+                'icon' => 'fas fa-chart-line',
+                'technologies' => [
+                    ['name' => 'Prometheus', 'icon' => 'fas fa-fire', 'color' => '#E6522C'],
+                    ['name' => 'Grafana', 'icon' => 'fas fa-chart-area', 'color' => '#F46800'],
+                    ['name' => 'ELK Stack', 'icon' => 'fas fa-search', 'color' => '#005571'],
+                    ['name' => 'Datadog', 'icon' => 'fas fa-dog', 'color' => '#632CA6'],
+                    ['name' => 'Nagios / Zabbix', 'icon' => 'fas fa-heartbeat', 'color' => '#1A1A1A'],
+                    ['name' => 'HashiCorp Vault', 'icon' => 'fas fa-vault', 'color' => '#000000'],
+                    ['name' => 'Jaeger', 'icon' => 'fas fa-route', 'color' => '#66C3D0'],
+                ],
+            ],
+            [
+                'title' => 'أنظمة وخدمات أساسية',
+                'icon' => 'fas fa-server',
+                'technologies' => [
+                    ['name' => 'Linux / Ubuntu', 'icon' => 'fab fa-linux', 'color' => '#FCC624'],
+                    ['name' => 'Nginx', 'icon' => 'fas fa-server', 'color' => '#009639'],
+                    ['name' => 'Apache', 'icon' => 'fas fa-feather-alt', 'color' => '#D22128'],
+                    ['name' => 'Git / GitLab', 'icon' => 'fab fa-gitlab', 'color' => '#FC6D26'],
+                    ['name' => 'Bash / Python', 'icon' => 'fab fa-python', 'color' => '#3776AB'],
+                    ['name' => 'RabbitMQ / Kafka', 'icon' => 'fas fa-stream', 'color' => '#FF6600'],
+                    ['name' => 'Redis', 'icon' => 'fas fa-bolt', 'color' => '#DC382D'],
+                    ['name' => 'Istio / Linkerd', 'icon' => 'fas fa-network-wired', 'color' => '#466BB0'],
+                ],
+            ],
+        ];
+    @endphp
+
     <!-- ============ SERVICE BANNER ============ -->
     <section class="page-banner page-banner-service">
         <div class="page-banner-overlay"></div>
@@ -112,8 +196,7 @@
         </div>
     </section>
 
-    <!-- ============ TECHNOLOGIES — CI/CD ============ -->
-    <section class="section-padding">
+    <section class="section-padding service-tech-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">التقنيات</span>
@@ -121,96 +204,14 @@
                 <p>أدوات ومنصات نعتمد عليها في التكامل والنشر والحاويات والسحابة والمراقبة</p>
             </div>
 
+            @foreach($devopsCategories as $category)
             <div class="service-devops-tech-section animate-on-scroll">
-                <h5 class="service-devops-tech-cat"><i class="fas fa-sync-alt"></i> CI/CD وبناء الأنابيب</h5>
+                <h5 class="service-devops-tech-cat"><i class="{{ $category['icon'] }}"></i> {{ $category['title'] }}</h5>
                 <div class="glass-panel service-tech-wrap">
-                    <div class="row g-3">
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Jenkins</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">GitLab CI/CD</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">GitHub Actions</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">CircleCI</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Travis CI</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Azure DevOps</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Argo CD</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Flux</div></div>
-                    </div>
+                    @include('frontend.partials.service-tech-grid', ['technologies' => $category['technologies']])
                 </div>
             </div>
-
-            <div class="service-devops-tech-section animate-on-scroll">
-                <h5 class="service-devops-tech-cat"><i class="fab fa-docker"></i> حاويات وأوركستريشن</h5>
-                <div class="glass-panel service-tech-wrap">
-                    <div class="row g-3">
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Docker</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Kubernetes</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Helm</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Kustomize</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Docker Compose</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">containerd</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Podman</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Rancher</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-devops-tech-section animate-on-scroll">
-                <h5 class="service-devops-tech-cat"><i class="fas fa-cloud"></i> سحابة ومنصات</h5>
-                <div class="glass-panel service-tech-wrap">
-                    <div class="row g-3">
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">AWS</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Azure</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Google Cloud</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">DigitalOcean</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">EKS / AKS / GKE</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Lambda / Serverless</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-devops-tech-section animate-on-scroll">
-                <h5 class="service-devops-tech-cat"><i class="fas fa-code-branch"></i> بنية كود وإدارة تكوين (IaC)</h5>
-                <div class="glass-panel service-tech-wrap">
-                    <div class="row g-3">
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Terraform</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Ansible</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Puppet</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Chef</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Pulumi</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">CloudFormation</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-devops-tech-section animate-on-scroll">
-                <h5 class="service-devops-tech-cat"><i class="fas fa-chart-line"></i> مراقبة وسجلات وأمان</h5>
-                <div class="glass-panel service-tech-wrap">
-                    <div class="row g-3">
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Prometheus</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Grafana</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">ELK Stack</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Datadog</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Nagios / Zabbix</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">HashiCorp Vault</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Jaeger</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-devops-tech-section animate-on-scroll">
-                <h5 class="service-devops-tech-cat"><i class="fas fa-server"></i> أنظمة وخدمات أساسية</h5>
-                <div class="glass-panel service-tech-wrap">
-                    <div class="row g-3">
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Linux / Ubuntu</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Nginx</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Apache</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Git / GitHub / GitLab</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Bash / Python</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">RabbitMQ / Kafka</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Redis</div></div>
-                        <div class="col-6 col-md-4 col-lg-2"><div class="service-tech-item">Istio / Linkerd</div></div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 

@@ -83,6 +83,8 @@ Route::middleware(['auth', 'check.user.active'])->prefix('admin')->name('admin.'
     Route::resource('projects', ProjectController::class);
 
     // Testimonials
+    Route::post('testimonials/{testimonial}/approve', [TestimonialController::class, 'approve'])->name('testimonials.approve');
+    Route::post('testimonials/{testimonial}/reject', [TestimonialController::class, 'reject'])->name('testimonials.reject');
     Route::resource('testimonials', TestimonialController::class);
 
     // Videos

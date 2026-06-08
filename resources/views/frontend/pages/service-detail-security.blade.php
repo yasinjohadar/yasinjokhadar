@@ -4,6 +4,17 @@
 @section('description', 'أمن المعلومات — حماية الأنظمة والبيانات، تقييم الثغرات، تطبيق أفضل الممارسات الأمنية و SSL مع ياسين جوخدار.')
 
 @section('content')
+    @php
+        $securityTechnologies = [
+            ['name' => 'SSL / TLS', 'icon' => 'fas fa-lock', 'color' => '#2E7D32'],
+            ['name' => 'OWASP', 'icon' => 'fas fa-shield-alt', 'color' => '#E60000'],
+            ['name' => 'JWT / OAuth', 'icon' => 'fas fa-key', 'color' => '#1565C0'],
+            ['name' => 'تشفير البيانات', 'icon' => 'fas fa-user-shield', 'color' => '#6A1B9A'],
+            ['name' => 'HTTPS', 'icon' => 'fas fa-globe', 'color' => '#00897B'],
+            ['name' => 'جدران نارية', 'icon' => 'fas fa-fire-alt', 'color' => '#D84315'],
+        ];
+    @endphp
+
     <!-- ============ SERVICE BANNER ============ -->
     <section class="page-banner page-banner-service">
         <div class="page-banner-overlay"></div>
@@ -112,38 +123,11 @@
         </div>
     </section>
 
-    <!-- ============ TECHNOLOGIES ============ -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-badge">التقنيات</span>
-                <h2>تقنيات ومعايير نعتمد عليها</h2>
-                <p>أدوات ومعايير حديثة لضمان أمان الأنظمة</p>
-            </div>
-            <div class="glass-panel service-tech-wrap animate-on-scroll">
-                <div class="row g-3">
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">SSL / TLS</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">OWASP</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">JWT / OAuth</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">تشفير البيانات</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">HTTPS</div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-2">
-                        <div class="service-tech-item">جدران نارية</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('frontend.partials.service-tech-section', [
+        'title' => 'تقنيات ومعايير نعتمد عليها',
+        'subtitle' => 'أدوات ومعايير حديثة لضمان أمان الأنظمة',
+        'technologies' => $securityTechnologies,
+    ])
 
     <!-- ============ RELATED SERVICES ============ -->
     <section class="section-padding" style="background: var(--clr-bg-secondary);">

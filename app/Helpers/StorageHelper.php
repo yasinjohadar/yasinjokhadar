@@ -73,14 +73,12 @@ if (!function_exists('course_image_url')) {
     function course_image_url($imagePath)
     {
         if (empty($imagePath)) {
-            return asset('frontend/assets/img/default-course.jpg');
+            return asset('frontend/assets/images/course-webdev.svg');
         }
 
-        // Clean the path
         $imagePath = ltrim($imagePath, '/');
         $filename = basename($imagePath);
-        
-        // Method 1: Try StorageHelperService (dynamic storage) - FIRST
+
         try {
             $storageHelper = app(\App\Services\Storage\StorageHelperService::class);
             $url = $storageHelper->getFileUrl('public', $imagePath);
@@ -90,20 +88,18 @@ if (!function_exists('course_image_url')) {
         } catch (\Exception $e) {
             // Continue to next method
         }
-        
-        // Method 2: Try route (local storage fallback) - SECOND
+
         try {
-            if (strpos($imagePath, 'courses/images/') !== false) {
+            if (str_starts_with($imagePath, 'courses/')) {
                 return route('course.image', ['filename' => $filename]);
             }
-            if (strpos($imagePath, 'courses/thumbnails/') !== false) {
+            if (str_starts_with($imagePath, 'courses/thumbnails/')) {
                 return route('course.thumbnail', ['filename' => $filename]);
             }
         } catch (\Exception $e) {
             // Continue to next method
         }
-        
-        // Method 3: Fallback to asset (requires storage link) - LAST
+
         return asset('storage/' . $imagePath);
     }
 }

@@ -13,28 +13,27 @@ return new class extends Migration
     {
         // في MySQL، لا يمكن تعديل enum مباشرة، يجب حذف العمود وإعادة إنشائه
         Schema::table('app_storage_configs', function (Blueprint $table) {
-            // حذف العمود القديم
+            $table->dropIndex(['driver']);
             $table->dropColumn('driver');
         });
 
         Schema::table('app_storage_configs', function (Blueprint $table) {
             // إعادة إنشاء العمود مع إضافة 'bunny'
             $table->enum('driver', [
-                'local', 
-                's3', 
-                'google_drive', 
-                'dropbox', 
-                'azure', 
-                'ftp', 
-                'sftp', 
-                'digitalocean', 
-                'wasabi', 
-                'backblaze', 
+                'local',
+                's3',
+                'google_drive',
+                'dropbox',
+                'azure',
+                'ftp',
+                'sftp',
+                'digitalocean',
+                'wasabi',
+                'backblaze',
                 'cloudflare_r2',
-                'bunny'  // إضافة bunny
+                'bunny',
             ])->comment('نوع التخزين')->after('name');
-            
-            // إعادة إضافة الفهرس
+
             $table->index('driver');
         });
     }

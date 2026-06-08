@@ -28,11 +28,15 @@ class SiteSettingsService
      */
     public function getSettings(): array
     {
-        $settings = SystemSetting::where('group', self::GROUP)
-            ->get()
-            ->keyBy('key')
-            ->map(fn ($setting) => $setting->value)
-            ->toArray();
+        try {
+            $settings = SystemSetting::where('group', self::GROUP)
+                ->get()
+                ->keyBy('key')
+                ->map(fn ($setting) => $setting->value)
+                ->toArray();
+        } catch (\Throwable) {
+            $settings = [];
+        }
 
         return [
             'site_email' => $settings['site_email'] ?? 'info@yasinjokhadar.net',
