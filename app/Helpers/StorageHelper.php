@@ -104,6 +104,44 @@ if (!function_exists('course_image_url')) {
     }
 }
 
+if (!function_exists('project_image_url')) {
+    /**
+     * Get the URL for a project card image
+     *
+     * @param string|null $imagePath The image path from database
+     * @return string|null The full URL to the image
+     */
+    function project_image_url($imagePath)
+    {
+        if (empty($imagePath)) {
+            return null;
+        }
+
+        $imagePath = ltrim($imagePath, '/');
+        $filename = basename($imagePath);
+
+        try {
+            $storageHelper = app(\App\Services\Storage\StorageHelperService::class);
+            $url = $storageHelper->getFileUrl('public', $imagePath);
+            if (!empty($url) && filter_var($url, FILTER_VALIDATE_URL)) {
+                return $url;
+            }
+        } catch (\Exception $e) {
+            // Continue to next method
+        }
+
+        try {
+            if (str_starts_with($imagePath, 'projects/')) {
+                return route('project.image', ['filename' => $filename]);
+            }
+        } catch (\Exception $e) {
+            // Continue to next method
+        }
+
+        return asset('storage/' . $imagePath);
+    }
+}
+
 if (!function_exists('storage_disk_url')) {
     /**
      * Get the URL for a file stored in a specific disk (dynamic storage)

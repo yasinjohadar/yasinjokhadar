@@ -18,8 +18,8 @@
     <!-- Hero -->
     <section class="project-detail-hero">
         <div class="project-detail-hero-img">
-            @if($project->image)
-                <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" width="1200" height="400" loading="eager">
+            @if($project->image_url)
+                <img src="{{ $project->image_url }}" alt="{{ $project->title }}" width="1200" height="400" loading="eager">
             @else
                 <div class="project-detail-hero-placeholder">
                     <div class="project-detail-hero-icon-ring">

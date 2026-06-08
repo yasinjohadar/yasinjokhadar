@@ -65,6 +65,19 @@ class Project extends Model
             ->all();
     }
 
+    public function getImageUrlAttribute(): ?string
+    {
+        if (empty($this->image)) {
+            return null;
+        }
+
+        try {
+            return route('project.image', ['filename' => basename($this->image)]);
+        } catch (\Throwable) {
+            return asset('storage/' . ltrim($this->image, '/'));
+        }
+    }
+
     protected static function boot()
     {
         parent::boot();

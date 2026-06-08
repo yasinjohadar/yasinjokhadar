@@ -46,8 +46,8 @@
                         <article class="glass-panel project-card animate-on-scroll">
                             <a href="{{ route('projects.show', $project->slug) }}" class="project-card-thumb-link">
                                 <div class="project-card-thumb">
-                                    @if($project->image)
-                                        <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="project-card-img" width="1920" height="1080" loading="lazy">
+                                    @if($project->image_url)
+                                        <img src="{{ $project->image_url }}" alt="{{ $project->title }}" class="project-card-img" width="1920" height="1080" loading="lazy">
                                     @else
                                         <div class="project-card-thumb-placeholder">
                                             <i class="{{ $icon }}"></i>

@@ -86,8 +86,8 @@
                                 <td>{{ $loop->iteration + ($projects->currentPage() - 1) * $projects->perPage() }}</td>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        @if($project->image)
-                                            <img src="{{ asset('storage/' . $project->image) }}" alt="" class="me-2 rounded" style="width:40px;height:40px;object-fit:cover">
+                                        @if($project->image_url)
+                                            <img src="{{ $project->image_url }}" alt="" class="me-2 rounded" style="width:40px;height:40px;object-fit:cover">
                                         @else
                                             <div class="me-2 bg-light rounded d-flex align-items-center justify-content-center" style="width:40px;height:40px">
                                                 <i class="bi bi-folder text-muted"></i>

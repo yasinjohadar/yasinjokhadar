@@ -64,10 +64,6 @@
                                 <label class="form-label">الوصف التفصيلي</label>
                                 <textarea name="description" rows="4" class="form-control">{{ old('description') }}</textarea>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">صورة المشروع</label>
-                                <input type="file" name="image" class="form-control" accept="image/*">
-                            </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">رابط عرض المشروع (Demo)</label>
@@ -89,6 +85,7 @@
                     @include('admin.projects._gallery')
                 </div>
                 <div class="col-lg-4">
+                    @include('admin.projects._card-image')
                     <div class="card custom-card">
                         <div class="card-body">
                             <div class="mb-3">

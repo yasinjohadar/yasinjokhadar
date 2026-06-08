@@ -65,6 +65,24 @@ Route::get('/serve/video-image/{filename}', function (string $filename) {
     return response()->file($fullPath, ['Content-Type' => $mime]);
 })->where('filename', '[a-zA-Z0-9_.-]+')->name('video.image');
 
+// عرض صور المشاريع (كارد + صفحة التفاصيل) من التخزين
+Route::get('/serve/project-image/{filename}', function (string $filename) {
+    $path = 'projects/' . $filename;
+    if (!Storage::disk('public')->exists($path)) {
+        abort(404);
+    }
+    $fullPath = Storage::disk('public')->path($path);
+    $mime = match (strtolower(pathinfo($filename, PATHINFO_EXTENSION))) {
+        'jpg', 'jpeg' => 'image/jpeg',
+        'png' => 'image/png',
+        'gif' => 'image/gif',
+        'webp' => 'image/webp',
+        'svg' => 'image/svg+xml',
+        default => 'application/octet-stream',
+    };
+    return response()->file($fullPath, ['Content-Type' => $mime]);
+})->where('filename', '[a-zA-Z0-9_.-]+')->name('project.image');
+
 // عرض صور المعرض من التخزين
 Route::get('/serve/gallery-image/{filename}', function (string $filename) {
     $path = 'gallery/' . $filename;
