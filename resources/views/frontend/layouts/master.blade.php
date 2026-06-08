@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @php
         $fa = asset('frontend/assets');
+        $cssPath = public_path('frontend/assets/css/style.css');
+        $jsPath = public_path('frontend/assets/js/main.js');
+        $assetVersion = max(
+            file_exists($cssPath) ? filemtime($cssPath) : 0,
+            file_exists($jsPath) ? filemtime($jsPath) : 0
+        ) ?: time();
         view()->share('fa', $fa);
+        view()->share('assetVersion', $assetVersion);
     @endphp
     @yield('meta')
     <meta name="description" content="@yield('description', 'ياسين جوخدار - مدرب ومطور برمجيات محترف. دورات تدريبية في تطوير الويب، البرمجة، وتطبيقات الموبايل.')">
@@ -57,7 +64,7 @@
     <!-- Prism.js (syntax highlighting for code blocks) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ $fa }}/css/style.css">
+    <link rel="stylesheet" href="{{ $fa }}/css/style.css?v={{ $assetVersion }}">
     @yield('styles')
 </head>
 
@@ -100,7 +107,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <!-- Main JS -->
-    <script src="{{ $fa }}/js/main.js"></script>
+    <script src="{{ $fa }}/js/main.js?v={{ $assetVersion }}"></script>
     @yield('scripts')
 
     <style>
