@@ -93,9 +93,12 @@
     @include('frontend.layouts.footer')
 
     <!-- Lightbox -->
-    <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-        <img src="" alt="" id="lightboxImg">
+    <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="عرض الصورة">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        <div class="lightbox-stage">
+            <img src="" alt="" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
     </div>
 
     <!-- Back to Top -->

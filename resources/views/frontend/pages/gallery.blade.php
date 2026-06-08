@@ -23,25 +23,22 @@
     </section>
 
     <!-- ============ GALLERY SECTION ============ -->
-    <section class="section-padding">
-        <div class="container">
+    <section class="section-padding gallery-section gallery-section--page">
+        <div class="gallery-section-glow gallery-section-glow-left" aria-hidden="true"></div>
+        <div class="gallery-section-glow gallery-section-glow-right" aria-hidden="true"></div>
+        <div class="container position-relative">
             <div class="section-header animate-on-scroll">
                 <span class="section-badge">معرض الصور</span>
                 <h2>صور من نشاطاتي</h2>
-                <p>لقطات من الفعاليات والورشات والدورات التدريبية</p>
+                <p>لقطات من الفعاليات والورشات والدورات التدريبية — اضغط على أي صورة للتكبير</p>
             </div>
-            <div class="gallery-grid animate-on-scroll">
+            <div class="gallery-grid gallery-grid--page animate-on-scroll">
                 @forelse($galleryImages as $item)
-                <div class="gallery-item">
-                    <img src="{{ $item->image_url }}" alt="{{ $item->title }}" width="400" height="250" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span class="gallery-caption">{{ $item->title }}</span>
-                    </div>
-                </div>
+                    @include('frontend.partials.gallery-item', ['item' => $item, 'featuredSpan' => true])
                 @empty
-                <div class="text-center py-5" style="grid-column: 1 / -1;">
-                    <i class="fas fa-images text-muted" style="font-size:3rem;"></i>
-                    <p class="text-muted mt-3">لا توجد صور في المعرض حالياً</p>
+                <div class="gallery-empty">
+                    <i class="fas fa-images"></i>
+                    <p>لا توجد صور في المعرض حالياً</p>
                 </div>
                 @endforelse
             </div>
