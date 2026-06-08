@@ -10,8 +10,8 @@
             <img
                 src="{{ $thumbUrl }}"
                 alt="{{ $video->title }}"
-                width="400"
-                height="225"
+                width="1920"
+                height="1080"
                 loading="lazy"
                 onerror="this.onerror=null;this.src='{{ $fallbackThumb }}';this.closest('.video-wrapper').classList.add('is-fallback');"
             >

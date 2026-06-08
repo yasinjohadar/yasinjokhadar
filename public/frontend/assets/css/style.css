@@ -2069,7 +2069,8 @@ a.skill-card {
 
 .video-card .video-wrapper {
     position: relative;
-    height: 210px;
+    width: 100%;
+    aspect-ratio: var(--aspect-fhd);
     overflow: hidden;
     background: linear-gradient(145deg, rgba(230, 0, 0, 0.1), rgba(26, 26, 46, 0.12));
 }
