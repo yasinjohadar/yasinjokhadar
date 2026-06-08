@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\WhatsAppWebSettingsController;
 use App\Http\Controllers\Admin\WhatsAppWebhookController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SiteSettingController;
 
 /*
@@ -47,9 +48,7 @@ use App\Http\Controllers\Admin\SiteSettingController;
 
 Route::middleware(['auth', 'check.user.active'])->prefix('admin')->name('admin.')->group(function () {
     // لوحة التحكم الرئيسية
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // المستخدمون
     Route::resource('users', UserController::class);
